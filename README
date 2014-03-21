@@ -3,10 +3,27 @@ To install everything:
 apt-get install git python pep8 pylint
 cd ~/dotfiles
 python install.py
+
+submodules
+----------
+
+git submodule init
 git submodule update
 
+command-t
+---------
+
 apt-get install vim-nox ruby1.9.1-dev
-cd ~/dotfiles/vim.symlink/command-t
+cd ~/dotfiles/vim.symlink/bundle/command-t
 gem install bundler
 bundle install
 rake make
+
+or
+
+wget http://www.vim.org/scripts/download_script.php?src_id=21586
+vi command-t.vba
+:so %
+cd ~/.vim/ruby/command-t
+ruby extconf.rb
+make

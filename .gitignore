@@ -1,3 +1,4 @@
 *.o
 *.hi
 *.errors
+vim.symlink/ruby/command-t
