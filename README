@@ -1,0 +1,12 @@
+To install everything:
+
+apt-get install git python pep8 pylint
+cd ~/dotfiles
+python install.py
+git submodule update
+
+apt-get install vim-nox ruby1.9.1-dev
+cd ~/dotfiles/vim.symlink/command-t
+gem install bundler
+bundle install
+rake make
