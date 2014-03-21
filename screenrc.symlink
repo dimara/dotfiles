@@ -1,0 +1,64 @@
+# C-a :source .screenrc
+
+termcapinfo xterm* ti@:te@
+# don't display copyright
+startup_message off
+# tab-completion flash in heading bar
+vbell off
+autodetach on
+altscreen on
+defscrollback 10000
+defutf8 on
+nonblock on
+
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
+shelltitle "$|bash"
+
+termcapinfo xterm*|Eterm|mlterm|rxvt 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+
+backtick 0 30 30 /bin/true
+
+hardstatus alwayslastline
+#hardstatus string '%{= kG}[%{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus string "%{= kW} %{+b R}%H%{-}%` |%L= %-Lw%{= BW}%50L>%n %t%{-}%+Lw%50L< %-14=| %{B}%d/%m %{W}%c"
+
+bind 'q' quit
+# use F8 to turn the status bar off at the bottom of the screen
+bindkey -k k8 hardstatus alwayslastline
+# use F9 to turn the status bar on the bottom back on
+bindkey -k k9 hardstatus alwaysignore
+# the next 2 lines are set up to use F11 and F12 to move one screen forward or backward (respectively) through your screen session.
+bindkey -k F1 prev
+bindkey -k F2 next
+# next,previous for urxvt
+bindkey "^[Od" prev # ctrl-left
+bindkey "^[Oc" next # ctrl-right
+
+# ctrl-t new screen
+bindkey "\024" screen -t bash
+
+# bind F9 and F10 to scroll up and down in the copy mode
+# and left other keys to programs running in screen
+bindkey -k k9 eval "copy" "stuff ^u"
+bindkey -k k; eval "copy" "stuff ^d"
+bindkey -m -k k9 stuff ^u
+bindkey -m -k k; stuff ^d
+
+
+# bind PgUp and PgDn to scroll up and down in the copy mode
+# and left other keys to programs running in screen
+bindkey -k kP eval "copy" "stuff ^u"
+bindkey -k kN eval "copy" "stuff ^d"
+bindkey -m -k kP stuff ^u
+bindkey -m -k kN stuff ^d
+
+bindkey "^J" prev # ctrl-left
+bindkey "^K" next # ctrl-right
+
+select 0
+
+
+

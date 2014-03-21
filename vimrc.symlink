@@ -1,0 +1,218 @@
+syntax on
+
+set laststatus=2
+set noshowmode
+set encoding=utf-8
+" AirLine symbols
+let g:airline_symbols = {}
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␤ '
+let g:airline_symbols.branch = '⎇ '
+" Control which sections get truncated and at what width
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 60,
+    \ 'x': 70,
+    \ 'y': 70,
+    \ 'z': 40,
+    \ }
+
+" Pass some arguments to syntax_checkers
+let g:syntastic_enable_balloons = 0
+let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
+let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
+let g:syntastic_c_gcc_args = ' -Wall -Wextra '
+
+" Disable specific bundle
+" let g:pathogen_disabled = ["syntastic"]
+call pathogen#infect()
+
+set guifont=Source\ Code\ Pro
+set t_Co=256
+set background=dark
+color molokai
+
+set showcmd  " display incomplete commands
+" Enabled file type detection and file-type specific plugins.
+filetype plugin indent on
+
+" Prefer ISO8859-7 over ISO8859-1:
+set fileencodings-=latin1
+set fileencodings+=greek
+" Path setting for finding files
+"
+set path+=**,
+
+" swap/backup files
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" -----------------------------------------------------------------------------
+"  Text Format
+" -----------------------------------------------------------------------------
+set noautoindent
+set wrap            " wrap lines
+set wrapmargin=1
+set softtabstop=2   " tab space
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set nojoinspaces
+set formatoptions+=n " support for numbered/bullet lists
+
+function SetupWrapping()
+  set textwidth=72
+  set formatoptions+=t
+endfunction
+
+" -----------------------------------------------------------------------------
+"  User Interface
+" -----------------------------------------------------------------------------
+set showcmd
+set wildmenu " way cooler command line mode completion
+set wildmode=list:longest " complete like shell
+set wildignore+=*.o,+=*.obj,+=*.bak,+=*.exe,+=*~,+=*.hi
+set backspace=eol,start,indent " allow backspacing over everything in insert mode
+set showmatch " brackets/braces that is
+set mat=1 " duration to show matching brace (1/10 sec)
+set scrolloff=3 " lines to always seeable when scrolling
+set magic
+
+
+" -----------------------------------------------------------------------------
+"  Searching
+" -----------------------------------------------------------------------------
+set incsearch  " do incremental searching
+set ignorecase " make this default, turn on case in search with /<search>\C/
+" type small case will search case independent, type mixed case will use exact
+set smartcase
+
+
+" -----------------------------------------------------------------------------
+"  Specail File Cases
+" -----------------------------------------------------------------------------
+if has("autocmd")
+" In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make set noexpandtab
+
+" Make sure all mardown files have the correct filetype set and setup wrapping
+  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt,rst} setf markdown | call SetupWrapping()
+
+" Treat JSON files like JavaScript
+  au BufNewFile,BufRead *.json set ft=javascript
+
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+  au FileType python set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
+
+" Remember last location in file, but not for commit messages.
+" see :help last-position-jump
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+endif
+
+
+" -----------------------------------------------------------------------------
+"  Mapping
+" -----------------------------------------------------------------------------
+set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR
+set langmap+=ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj
+set langmap+=κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
+
+" setup mapleader
+let mapleader=","
+
+map <silent> bb :ToggleBookmark<CR>
+map <silent> bn :NextBookmark<CR>
+map <silent> bp :PreviousBookmark<CR>
+
+" map - to end of line, _ to start
+noremap - ^
+noremap _ $
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+\ | wincmd p | diffthis
+
+" Better way to enter command line (get rid of pointless shift)
+nnoremap ; :
+cnoremap ; <C-C>
+
+"""---------------------
+"""# New Movement Keys #
+"""---------------------
+
+"" normally nothing
+noremap <C-k> 2<C-Y>
+noremap <C-j> 2<C-E>
+
+"""-------------------------------------
+"""# File/Window/Buffer Managment Keys #
+"""-------------------------------------
+
+"" quick file browse mapping
+map <Leader>e :e %:p:h<CR>
+map <Leader>E :lcd %:p:h<CR>
+
+"" new tab
+""nmap <Leader>t :tabe %:p:h<CR>
+nmap <Leader>T :tabe .<CR>
+nmap <Leader>n :tabnew<CR>
+
+"" Give tab cycling nicer keys (normally these just do same as j & k)
+map <Leader><Tab> :tabnext<CR>
+map <Leader><S-Tab> :tabprevious<CR>
+
+"" close window
+map <Leader>q :q<CR>
+"" quit vim
+map <Leader>Q :qall!<CR>
+
+
+" -----------------------------------------------------------------------------
+"  Whitespace
+" -----------------------------------------------------------------------------
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+"Highlight more than 80 chars
+au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+
+
+"autocmd BufWritePost *.py call Flake8()
+autocmd Filetype gitcommit set expandtab textwidth=68 spell
+map j gj
+map k gk
+"map <space> /
+map 0 ^
+
+" Delete trailing white space on save, useful for Python and CoffeeScript ;)
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+" Toggle paste mode on and off
+
+set pastetoggle=<leader>p
+inoremap jk <Esc>
+
+nnoremap <F5> "=strftime("%c")<CR>P
+inoremap <F5> <C-R>=strftime("%c")<CR>
+map <F6> :setlocal spell spelllang=en,el<return>

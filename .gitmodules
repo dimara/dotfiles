@@ -1,0 +1,12 @@
+[submodule "vim.symlink/bundle/tcomment_vim"]
+	path = vim.symlink/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim
+[submodule "vim.symlink/bundle/syntastic"]
+	path = vim.symlink/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim.symlink/bundle/command-t"]
+	path = vim.symlink/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "vim.symlink/bundle/vim-airline"]
+	path = vim.symlink/bundle/vim-airline
+	url = https://github.com/bling/vim-airline

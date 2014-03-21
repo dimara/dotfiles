@@ -1,0 +1,48 @@
+[user]
+	name = Dimitris Aragiorgis
+	email = dimara@grnet.gr
+[branch]
+  autosetuprebase = always
+[core]
+  pager = less -FRSX
+  editor = vim
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = 1
+[merge]
+   tool = meld
+	ff = false
+[alias]
+	ci = commit
+    co = checkout
+	undo = reset --soft HEAD^
+    count = shortlog -sn
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit --date=relative \
+         --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset by %C(yellow)%ae%Creset'
+    s = status -sb
+    changed = diff HEAD^ --name-status
+    meld = difftool
+    f = commit --amend --no-edit
+    cached = diff --cached
+    c = checkout @{-1}
+[diff]
+	tool = meld
+[help]
+	autocorrect = 1
+[credential]
+	helper = cache
+    timeout = 120000
+[pull]
+  rebase = True
+[sendemail]
+  smtpencryption = ssl
+  smtpserver = danaos.cslab.ece.ntua.gr
+  smtpuser = dimara
+  smtpserverport = 2525
+  envelopesender = dimara@grnet.gr
+[dch]
+  author = Dimitris Aragiorgis
+  email = dimara@grnet.gr
