@@ -2,3 +2,4 @@
 *.hi
 *.errors
 vim.symlink/ruby/command-t
+command-t.vba

@@ -27,3 +27,10 @@ vi command-t.vba
 cd ~/.vim/ruby/command-t
 ruby extconf.rb
 make
+
+spell
+-----
+
+apt-get install vim-scripts
+rm /usr/share/vim/vim73/spell/*.spl
+rm /usr/share/vim/vim73/spell/*.sug

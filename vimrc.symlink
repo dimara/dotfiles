@@ -213,6 +213,9 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 set pastetoggle=<leader>p
 inoremap jk <Esc>
 
-nnoremap <F5> "=strftime("%c")<CR>P
-inoremap <F5> <C-R>=strftime("%c")<CR>
-map <F6> :setlocal spell spelllang=en,el<return>
+nnoremap <Leader>d "=strftime("%c")<CR>pA
+inoremap <Leader>d <C-R>=strftime("%c")<CR>
+
+set spelllang=en,el
+imap <Leader>s <C-o>:setlocal spell!<CR>
+nmap <Leader>s :setlocal spell!<CR>
