@@ -24,7 +24,7 @@ let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
 let g:syntastic_c_gcc_args = ' -Wall -Wextra '
 
 " Disable specific bundle
-" let g:pathogen_disabled = ["syntastic"]
+let g:pathogen_disabled = ["syntastic"]
 call pathogen#infect()
 
 set guifont=Source\ Code\ Pro
@@ -219,3 +219,6 @@ inoremap <Leader>d <C-R>=strftime("%c")<CR>
 set spelllang=en,el
 imap <Leader>s <C-o>:setlocal spell!<CR>
 nmap <Leader>s :setlocal spell!<CR>
+
+"Allow yank more than 50 lines
+set viminfo='20,<1000,s10,h
