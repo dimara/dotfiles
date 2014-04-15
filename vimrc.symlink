@@ -212,13 +212,14 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 
 set pastetoggle=<leader>p
 inoremap jk <Esc>
+inoremap jj <Esc>
 
 nnoremap <Leader>d "=strftime("%c")<CR>pA
 inoremap <Leader>d <C-R>=strftime("%c")<CR>
 
 set spelllang=en,el
-imap <Leader>s <C-o>:setlocal spell!<CR>
-nmap <Leader>s :setlocal spell!<CR>
+nnoremap <Leader>s :setlocal spell!<CR>
+inoremap <Leader>s <C-o>:setlocal spell!<CR>
 
 "Allow yank more than 50 lines
 set viminfo='20,<1000,s10,h
