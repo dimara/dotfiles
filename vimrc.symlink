@@ -51,8 +51,13 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 "  Text Format
 " -----------------------------------------------------------------------------
 set noautoindent
-set wrap            " wrap lines
-set wrapmargin=1
+" this enables visual wrapping
+set wrap
+" this turns off physical line wrapping (ie: auto insertion of newlines)
+set textwidth=0
+" no margin at the end of the line
+set nolist " do not show $ at EOL
+set wrapmargin=0
 set softtabstop=2   " tab space
 set tabstop=2
 set shiftwidth=2
@@ -61,7 +66,9 @@ set nojoinspaces
 set formatoptions+=n " support for numbered/bullet lists
 
 function SetupWrapping()
-  set textwidth=72
+  set textwidth=80
+  set linebreak
+  set wrapmargin=1
   set formatoptions+=t
 endfunction
 
@@ -214,12 +221,17 @@ set pastetoggle=<leader>p
 inoremap jk <Esc>
 inoremap jj <Esc>
 
-nnoremap <Leader>d "=strftime("%c")<CR>pA
-inoremap <Leader>d <C-R>=strftime("%c")<CR>
+nnoremap <Leader>d "=strftime("# dimara, %c")<CR>pA
+inoremap <Leader>d <C-R>=strftime("# dimara, %c")<CR>
 
 set spelllang=en,el
 nnoremap <Leader>s :setlocal spell!<CR>
 inoremap <Leader>s <C-o>:setlocal spell!<CR>
 
-"Allow yank more than 50 lines
+"Allow yank more than 50 line
 set viminfo='20,<1000,s10,h
+
+autocmd FileType mail set tw=72
+
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>
