@@ -215,14 +215,16 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-" Toggle paste mode on and off
 
+" Toggle paste mode on and off
 set pastetoggle=<leader>p
 inoremap jk <Esc>
 inoremap jj <Esc>
 
-nnoremap <Leader>d "=strftime("# dimara, %c")<CR>pA
-inoremap <Leader>d <C-R>=strftime("# dimara, %c")<CR>
+" Similar format with the date command
+" # dimara, Mon Jan  5 20:15:11 EET 2015
+nnoremap <Leader>d "=strftime("# dimara, %a %b %e %k:%M:%S %Z %Y")<CR>pA
+inoremap <Leader>d <C-R>=strftime("# dimara, %a %b %e %k:%M:%S %Z %Y")<CR>
 
 set spelllang=en,el
 nnoremap <Leader>s :setlocal spell!<CR>
@@ -233,5 +235,6 @@ set viminfo='20,<1000,s10,h
 
 autocmd FileType mail set tw=72
 
+"Spell auto correction
 imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-f> [s1z=<c-o>
