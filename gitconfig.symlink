@@ -1,6 +1,6 @@
 [user]
 	name = Dimitris Aragiorgis
-	email = dimara@grnet.gr
+	email = dimitris.aragiorgis@gmail.com
 [branch]
   autosetuprebase = always
 [core]
@@ -41,7 +41,7 @@
   smtpserver = danaos.cslab.ece.ntua.gr
   smtpuser = dimara
   smtpserverport = 2525
-  envelopesender = dimara@grnet.gr
+  envelopesender = dimitris.aragiorgis@gmail.com
 [dch]
   author = Dimitris Aragiorgis
-  email = dimara@grnet.gr
+  email = dimitris.aragiorgis@gmail.com
