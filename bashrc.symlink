@@ -152,7 +152,7 @@ screen_set_window_title () {
     $HOME) HPWD="~";;
     $HOME/*) HPWD="~${HPWD#$HOME}";;
   esac
-  printf '\ek%s\e\\' "$(basename $HPWD)"
+  printf '\ek%s\e\\' "$(basename "$HPWD")"
 }
 
 case "$TERM" in
