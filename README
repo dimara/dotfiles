@@ -41,3 +41,20 @@ virtualenvwrapper
 pip install virtualenvwrapper
 
 http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper
+
+
+xmonad
+------
+
+apt-get install xmonad xmobar suckless-tools slim rxvt-unicode-256color \
+                xscreensaver lxappearance gnupg-agent
+
+# This is from jessie
+apt-get install xss-lock
+
+xmonad --recompile
+
+reboot
+
+Uncomment LID_SLEEP=true in /etc/default/acpi-support so that
+/etc/acpi/lid.sh will suspend the PC upon lid close.

@@ -1,0 +1,35 @@
+/* turn url highlight on */
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: x-www-browser
+URxvt.matcher.button: 1
+! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
+
+URxvt.depth: 32
+
+/* turn visual bell off */
+URxvt*visualBell: false
+
+/* turn scroll bar off */
+URxvt*scrollBar: false
+
+/* set foreground color */
+URxvt*foreground: White
+
+/* set background color
+ * (80 opacity level, #000000 (black) color) */
+URxvt*background: [90]#000000
+
+/* Make urxvt set urgent on a bell */
+URxvt.urgentOnBell: true
+
+/* Change cursor size */
+/* 16, 32, 48 or 64 may be good values */
+! Xcursor.size: 48
+
+/* Configure Font */
+Xft.dpi: 100
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.rgba: rgb
+URxvt*font: xft:DejaVuSansMono:size=8

@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# start compositing manager
+xcompmgr -cC -t-5 -l-6 -r5 &
+
+# start notification daemon
+#/usr/lib/notification-daemon/notification-daemon &
+
+# set the cursor as pointer
+xsetroot -cursor_name left_ptr
+
+# setup touchpad and fix touchpad resolution and hickup issue
+# see  https://wiki.archlinux.org/index.php/Touchpad_Synaptics
+# /usr/share/X11/xorg.conf.d/50-thinkpad-x230-touchpad.conf
+
+# switch keyboard layout *only* with CapsLock
+setxkbmap -option 'grp:caps_toggle' -layout  'us,gr'
+
+# start xscreensaver deamon
+xscreensaver -no-splash &
+# Not available in wheezy
+#xss-lock -- xscreensaver-command -lock &
+
+# start urxvt deamon
+urxvtd -q -f -o
+
+# Let X start gpg-agent by adding
+# use-agent option in ~.gnupg/gpg.conf
+#eval $(gpg-agent --daemon)
+# X starts ssh-agent by default because the
+# use-ssh-agent option is present in /etc/X11/Xsession.options
+#eval $(ssh-agent --daemon)
+
+# start desired apps
+pidgin &
+skype &
+
+exec xmonad
