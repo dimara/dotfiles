@@ -34,3 +34,10 @@ spell
 apt-get install vim-scripts
 rm /usr/share/vim/vim73/spell/*.spl
 rm /usr/share/vim/vim73/spell/*.sug
+
+virtualenvwrapper
+-----------------
+
+pip install virtualenvwrapper
+
+http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper

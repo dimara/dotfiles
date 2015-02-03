@@ -160,3 +160,8 @@ case "$TERM" in
       PS1='$(screen_set_window_title)'$PS1
       ;;
 esac
+
+# VirtualEnvWrapper
+# pip install virtualenvwrapper
+WORKON_HOME=~/VirtualEnvs
+test -f  /usr/local/bin/virtualenvwrapper.sh && source /usr/local/bin/virtualenvwrapper.sh
