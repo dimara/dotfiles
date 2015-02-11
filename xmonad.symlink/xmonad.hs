@@ -85,6 +85,8 @@ myManageHook = composeAll
   , className =? "Vlc"                   --> doShift "5:media"
   , className =? "Eog"                   --> doShift "5:media"
   , className =? "VirtualBox"            --> doShift "6:vbox"
+  , className =? "rdesktop"              --> doShift "6:vbox"
+  , className =? "remmina"               --> doShift "6:vbox"
   , isFullscreen --> (doF S.focusDown <+> doFullFloat)
   , manageDocks
   ]
