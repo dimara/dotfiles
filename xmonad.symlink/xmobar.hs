@@ -20,10 +20,20 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                               ] 10
                     , Run Memory [ "-t", "Mem: <usedratio>%" ] 10
                     , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Battery [ "-t", "Batt: <left>% / <timeleft> <acstatus>"
-                                  , "--"
-                                  , "-O", "<fc=green>(AC)</fc>", "-o", ""
+                    , Run Battery [ "-t", "Batt(<acstatus>): <left>% / <timeleft>"
+                                  , "--Low"      , "10"        -- units: %
+                                  , "--High"     , "80"        -- units: %
+                                  , "--low"      , "darkred"
+                                  , "--normal"   , "darkorange"
+                                  , "--high"     , "darkgreen"
+                                  , "--" -- battery specific options
+                                  -- see /sys/class/power_supply/BAT0/
                                   , "-c", "energy_full"
+                                  -- discharging status
+                                  , "-o" , "DC"
+                                  -- AC "on" status
+                                  -- , "-O" , "<fc=green>AC</fc>"
+                                  , "-O" , "AC"
                                   ] 300
                     , Run Kbd [ ("us", "us")
                               , ("gr", "gr")
