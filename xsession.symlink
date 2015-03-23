@@ -31,6 +31,9 @@ urxvtd -q -f -o
 # use-ssh-agent option is present in /etc/X11/Xsession.options
 #eval $(ssh-agent --daemon)
 
+# start notification-daemon needed by e.g. pidgin
+/usr/lib/notification-daemon/notification-daemon &
+
 # start desired apps
 pidgin &
 skype &
