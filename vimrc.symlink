@@ -217,7 +217,7 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 
 " Toggle paste mode on and off
-set pastetoggle=<leader>p
+set pastetoggle=<leader><leader>
 inoremap jk <Esc>
 inoremap jj <Esc>
 
@@ -238,3 +238,7 @@ autocmd FileType mail set tw=72
 "Spell auto correction
 imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
 nmap <c-f> [s1z=<c-o>
+
+"Shortcut for using named buffer a
+map <Leader>y "ayy<CR>
+map <Leader>p "ap<CR>
