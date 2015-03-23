@@ -4,23 +4,28 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
        , border = NoBorder
        , borderColor = "#000000"
        , position = Top
+       -- interval are tenth of seconds, e.g:
+       --  10 -> second
+       --  600 -> minute
+       --  18000 -> half an hour
+       --  36000 -> hour
        , commands = [ Run Network "eth0" [ "-L", "8", "-H", "32"
                                          , "-l", "#C9A34E", "-n", "#429942"
                                          , "-h", "#A36666"
                                          , "-t", "<dev>: <rx> / <tx>"
-                                         ] 10
+                                         ] 300
                     , Run Weather "LGAV" [ "-t", "<skyCondition> <tempC>C"
                                          , "-L", "10", "-H", "30"
                                          , "-n","#CEFFAC", "-h", "#FFB6B0"
                                          ,"-l","#96CBFE"
-                                         ] 360
+                                         ] 18000
                     , Run Cpu [ "-L", "3", "-H", "50"
                               , "--normal", "#429942"
                               , "--high", "#A36666"
-                              ] 10
-                    , Run Memory [ "-t", "Mem: <usedratio>%" ] 10
-                    , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-                    , Run Battery [ "-t", "Batt(<acstatus>): <left>% / <timeleft>"
+                              ] 300
+                    , Run Memory [ "-t", "Mem: <usedratio>%" ] 100
+                    , Run Date "%a %b %_d %Y %H:%M" "date" 600
+                    , Run Battery [ "-t", "Batt[<acstatus>]: <left>% / <timeleft>"
                                   , "--Low"      , "10"        -- units: %
                                   , "--High"     , "80"        -- units: %
                                   , "--low"      , "darkred"
@@ -34,7 +39,7 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                                   -- AC "on" status
                                   -- , "-O" , "<fc=green>AC</fc>"
                                   , "-O" , "AC"
-                                  ] 300
+                                  ] 600
                     , Run Kbd [ ("us", "us")
                               , ("gr", "gr")
                               ]
