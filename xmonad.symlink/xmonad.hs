@@ -55,7 +55,7 @@ myLogHook xmproc = do
 -- Workspaces
 myWorkSpaces :: [String]
 myWorkSpaces =
-  [ "1:mail", "2:web", "3:talk", "4:float", "5:media"
+  [ "1:mail", "2:web", "3:talk", "4:code", "5:media"
   , "6:vbox", "7:code", "8:code", "9:code", "0:bash"
   ]
 
@@ -77,7 +77,6 @@ myManageHook :: Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
   [ resource  =? "desktop_window"        --> doIgnore
   , resource  =? "Dialog"                --> doFloat
-  -- , className =? "Skype"                 --> doFloat <+> doShift "4:float"
   , className =? "Skype"                 --> doShift "3:talk"
   , className =? "Pidgin"                --> doShift "3:talk"
   , className =? "Galculator"            --> doFloat
@@ -87,7 +86,7 @@ myManageHook = composeAll
   , className =? "VirtualBox"            --> doShift "6:vbox"
   , className =? "rdesktop"              --> doShift "6:vbox"
   , className =? "remmina"               --> doShift "6:vbox"
-  , isFullscreen --> (doF S.focusDown <+> doFullFloat)
+  -- , isFullscreen --> (doF S.focusDown <+> doFullFloat)
   , manageDocks
   ]
 
@@ -97,7 +96,6 @@ myLayoutHook = avoidStruts
   $ onWorkspace "1:mail" common
   $ onWorkspace "2:web" common
   $ onWorkspace "3:talk" im
-  $ onWorkspace "4:float" (float ||| tall)
   $ onWorkspace "6:vbox" (full ||| tall)
   $ standardLayouts
     where
