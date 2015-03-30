@@ -18,6 +18,8 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.ThreeColumns
 
+import XMonad.Actions.CycleRecentWS
+
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 
@@ -142,17 +144,25 @@ myKeys =
 
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
-  [((m .|. altMask, k), windows $ f i)
+  [ ((m .|. altMask, k), windows $ f i)
       | (i, k) <- zip myWorkSpaces ([xK_1 .. xK_9] ++ [xK_0])
       , (f, m) <- [(S.greedyView, 0), (S.shift, shiftMask)]
   ] ++
 
   -- win-{1,2,3}, Switch to physical/Xinerama screens 1, 2, or 3
   -- win-shift-{1,2,3}, Move client to screen 1, 2, or 3
-  [((m .|. winMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+  [ ((m .|. winMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip [xK_1, xK_2, xK_3] [0..]
       , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]
+  ] ++
+
+  -- win-Tab to cycle recent workspaces
+  [ ((winMask, xK_Tab), cycleRecentWS [xK_Super_L] xK_Tab xK_Tab)
+  -- win-Escape to swap visible workspaces on current screen
+  , let options w = map (S.greedyView `flip` w) (visibleTags w)
+    in ((winMask, xK_Escape), cycleWindowSets options [xK_Super_L] xK_Escape xK_Escape)
   ]
+  where visibleTags w = map (S.tag . S.workspace) $ S.visible w ++ [S.current w]
 
 
 main :: IO ()
