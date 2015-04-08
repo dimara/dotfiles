@@ -131,6 +131,7 @@ myKeys =
   , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
   , ((0, xF86XK_MonBrightnessUp), spawn "xbacklight +20")
   , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -20")
+  , ((0, xK_Print), spawn "scrot -q 1 $HOME/Pictures/Screenshots/%Y-%m-%d-%H:%M:%S.png")
   , ((altMask .|. shiftMask, xK_BackSpace), spawn "xscreensaver-command -lock")
   , ((altMask, xK_p), spawn "dmenu_run -fn BitstreamVeraSansMono:size=10:dpi=168:antialias=true")
   , ((altMask, xK_Return), spawn myTerminal)
@@ -156,11 +157,11 @@ myKeys =
       , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]
   ] ++
 
-  -- win-Tab to cycle recent workspaces
-  [ ((winMask, xK_Tab), cycleRecentWS [xK_Super_L] xK_Tab xK_Tab)
-  -- win-Escape to swap visible workspaces on current screen
+  -- alt-` to cycle recent workspaces
+  [ ((altMask, xK_grave), cycleRecentWS [xK_Alt_L] xK_grave xK_grave)
+  -- alt-Escape to swap visible workspaces on current screen
   , let options w = map (S.greedyView `flip` w) (visibleTags w)
-    in ((winMask, xK_Escape), cycleWindowSets options [xK_Super_L] xK_Escape xK_Escape)
+    in ((altMask, xK_Escape), cycleWindowSets options [xK_Alt_L] xK_Escape xK_Escape)
   ]
   where visibleTags w = map (S.tag . S.workspace) $ S.visible w ++ [S.current w]
 
