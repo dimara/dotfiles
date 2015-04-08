@@ -28,6 +28,13 @@ cd ~/.vim/ruby/command-t
 ruby extconf.rb
 make
 
+or
+
+# Go to command-t submodule
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb
+make
+
 spell
 -----
 
@@ -47,7 +54,8 @@ xmonad
 ------
 
 apt-get install xmonad xmobar suckless-tools slim rxvt-unicode-256color \
-                xscreensaver lxappearance gnupg-agent
+                xscreensaver lxappearance gnupg-agent hsetroot scrot xcompmgr \
+                xbacklight laptop-mode-tools
 
 # This is from jessie
 apt-get install xss-lock

@@ -1,13 +1,19 @@
 #!/bin/bash
 
 # start compositing manager
-xcompmgr -cC -t-5 -l-6 -r5 &
+xcompmgr -t-5 -l-6 -r5 &
 
-# start notification daemon
-#/usr/lib/notification-daemon/notification-daemon &
+# start notification-daemon needed by e.g. pidgin
+/usr/lib/notification-daemon/notification-daemon &
 
 # set the cursor as pointer
 xsetroot -cursor_name left_ptr
+
+# solid background colors
+BLUE="#72A0C1" # air superiority blue
+GRAY="#B2BEB5" # ash gray
+
+hsetroot -solid "$BLUE"
 
 # setup touchpad and fix touchpad resolution and hickup issue
 # see  https://wiki.archlinux.org/index.php/Touchpad_Synaptics
@@ -30,9 +36,6 @@ urxvtd -q -f -o
 # X starts ssh-agent by default because the
 # use-ssh-agent option is present in /etc/X11/Xsession.options
 #eval $(ssh-agent --daemon)
-
-# start notification-daemon needed by e.g. pidgin
-/usr/lib/notification-daemon/notification-daemon &
 
 # start desired apps
 pidgin &
