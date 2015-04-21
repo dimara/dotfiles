@@ -100,7 +100,7 @@ set smartcase
 " -----------------------------------------------------------------------------
 if has("autocmd")
 " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType make set noexpandtab
+  au FileType {make,c,cpp} set noexpandtab
 
 " Make sure all mardown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt,rst} setf markdown | call SetupWrapping()
