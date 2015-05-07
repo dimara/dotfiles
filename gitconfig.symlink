@@ -37,10 +37,6 @@
 [pull]
   rebase = True
 [sendemail]
-  #smtpencryption = ssl
-  #smtpserver = danaos.cslab.ece.ntua.gr
-  #smtpuser = dimara
-  #smtpserverport = 2525
   envelopesender = dimitris.aragiorgis@gmail.com
   smtpencryption = tls
   smtpserver = smtp.gmail.com
