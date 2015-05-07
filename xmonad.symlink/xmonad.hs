@@ -18,7 +18,7 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.SimplestFloat
 import XMonad.Layout.ThreeColumns
 
-import XMonad.Actions.CycleRecentWS
+import XMonad.Actions.CycleWS
 
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -141,6 +141,8 @@ myKeys =
   , ((altMask, xK_f), withFocused $ float)
   , ((altMask, xK_m), withFocused $ mouseMoveWindow)
   , ((altMask, xK_r), withFocused $ mouseResizeWindow)
+  , ((altMask, xK_grave), nextScreen)
+  , ((altMask, xK_Escape), swapPrevScreen)
   ] ++
 
   -- mod-[1..9], Switch to workspace N
@@ -155,15 +157,7 @@ myKeys =
   [ ((m .|. winMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
       | (key, sc) <- zip [xK_1, xK_2, xK_3] [0..]
       , (f, m) <- [(S.view, 0), (S.shift, shiftMask)]
-  ] ++
-
-  -- alt-` to cycle recent workspaces
-  [ ((altMask, xK_grave), cycleRecentWS [xK_Alt_L] xK_grave xK_grave)
-  -- alt-Escape to swap visible workspaces on current screen
-  , let options w = map (S.greedyView `flip` w) (visibleTags w)
-    in ((altMask, xK_Escape), cycleWindowSets options [xK_Alt_L] xK_Escape xK_Escape)
   ]
-  where visibleTags w = map (S.tag . S.workspace) $ S.visible w ++ [S.current w]
 
 
 main :: IO ()
