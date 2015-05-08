@@ -10,3 +10,6 @@
 [submodule "vim.symlink/bundle/vim-airline"]
 	path = vim.symlink/bundle/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "vim.symlink/bundle/vim-align"]
+	path = vim.symlink/bundle/vim-align
+	url = https://github.com/tsaleh/vim-align.git

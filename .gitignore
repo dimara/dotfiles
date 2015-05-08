@@ -3,3 +3,4 @@
 *.errors
 vim.symlink/ruby/command-t
 command-t.vba
+vim.symlink/bundle

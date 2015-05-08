@@ -10,31 +10,6 @@ submodules
 git submodule init
 git submodule update
 
-command-t
----------
-
-apt-get install vim-nox ruby1.9.1-dev
-cd ~/dotfiles/vim.symlink/bundle/command-t
-gem install bundler
-bundle install
-rake make
-
-or
-
-wget http://www.vim.org/scripts/download_script.php?src_id=21586
-vi command-t.vba
-:so %
-cd ~/.vim/ruby/command-t
-ruby extconf.rb
-make
-
-or
-
-# Go to command-t submodule
-cd ~/.vim/bundle/command-t/ruby/command-t
-ruby extconf.rb
-make
-
 spell
 -----
 
@@ -48,7 +23,6 @@ virtualenvwrapper
 pip install virtualenvwrapper
 
 http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper
-
 
 xmonad
 ------
