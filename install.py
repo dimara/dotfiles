@@ -42,6 +42,9 @@ def install():
                     shutil.rmtree(dest)
             elif back_all or ans == 'b':
                 shutil.move(dest, dest + '.back')
+        # Check for broken symlinks
+        elif os.path.lexists(dest):
+            os.unlink(dest)
 
         # Create the link
         os.symlink(os.path.realpath(source), dest)
