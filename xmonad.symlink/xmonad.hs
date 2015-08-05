@@ -135,6 +135,7 @@ myKeys =
   , ((altMask .|. shiftMask, xK_BackSpace), spawn "xscreensaver-command -lock")
   , ((altMask, xK_p), spawn "dmenu_run -fn BitstreamVeraSansMono:size=10:dpi=168:antialias=true")
   , ((altMask, xK_Return), spawn myTerminal)
+  , ((altMask .|. shiftMask, xK_Return), windows S.swapMaster)
   , ((altMask, xK_i), spawn myBrowser)
   , ((altMask, xK_w), kill)
   , ((altMask, xK_t), withFocused $ windows . S.sink)
