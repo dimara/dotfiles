@@ -14,7 +14,7 @@
 	ui = 1
 [merge]
   tool = meld
-	ff = false
+	ff = only
 [alias]
   ci = commit
   co = checkout
