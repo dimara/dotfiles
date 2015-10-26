@@ -59,7 +59,7 @@ set textwidth=0
 set nolist " do not show $ at EOL
 set wrapmargin=0
 set softtabstop=2   " tab space
-set tabstop=2
+set tabstop=4
 set shiftwidth=2
 set expandtab
 set nojoinspaces

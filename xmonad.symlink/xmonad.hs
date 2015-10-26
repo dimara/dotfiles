@@ -107,7 +107,7 @@ myLayoutHook = avoidStruts
   tall = named "Tall" $ smartBorders (ResizableTall 1 (3/100) (1/2) [])
   three = named "3Col" $ smartBorders (ThreeCol 1 (3/100) (1/3))
   full = named "Full" $ noBorders Full
-  grid = named "Grid" $ noBorders Grid
+  grid = named "Grid" $ smartBorders Grid
   float = named "Float" $ simplestFloat
   mirror = named "Mirror" $ Mirror tall
 
