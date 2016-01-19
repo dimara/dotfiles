@@ -247,4 +247,5 @@ map <Leader>p "ap<CR>
 " See https://wiki.samba.org/index.php/CodeReview
 let g:git_ci_msg_user = substitute(system("git config --get user.name"), '\n$', '', '')
 let g:git_ci_msg_email = substitute(system("git config --get user.email"), '\n$', '', '')
-iab #R Reviewed-by: <C-R>=printf("%s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>
+nnoremap <Leader>r "=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>pA
+inoremap <Leader>r <C-R>=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>
