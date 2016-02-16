@@ -142,8 +142,11 @@ command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 \ | wincmd p | diffthis
 
 " Better way to enter command line (get rid of pointless shift)
+" In order to :wq when in greek use ;ς; (qwq) or shift+;;+w+q
 nnoremap ; :
-cnoremap ; <C-C>
+cnoremap ς w
+cnoremap ; q
+nnoremap ¨ :
 
 """---------------------
 """# New Movement Keys #
@@ -220,6 +223,9 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 set pastetoggle=<leader><leader>
 inoremap jk <Esc>
 inoremap jj <Esc>
+inoremap ξξ <Esc>
+
+vnoremap γ; gq
 
 " Similar format with the date command
 " # dimara, Mon Jan  5 20:15:11 EET 2015
