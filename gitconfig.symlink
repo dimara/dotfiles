@@ -41,6 +41,9 @@
   smtpserver = smtp.gmail.com
   smtpuser = dimitris.aragiorgis@gmail.com
   smtpserverport = 587
+  suppressfrom = true
+  suppresscc = all
+  chainreplyto = false
 [dch]
   author = Dimitris Aragiorgis
   email = dimitris.aragiorgis@gmail.com
