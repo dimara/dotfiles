@@ -13,3 +13,6 @@
 [submodule "vim.symlink/bundle/vim-align"]
 	path = vim.symlink/bundle/vim-align
 	url = https://github.com/tsaleh/vim-align.git
+[submodule "vim.symlink/bundle/vim-xkbswitch"]
+	path = vim.symlink/bundle/vim-xkbswitch
+	url = http://github.com/lyokha/vim-xkbswitch
