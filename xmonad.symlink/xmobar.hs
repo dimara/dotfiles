@@ -9,11 +9,11 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
        --  600 -> minute
        --  18000 -> half an hour
        --  36000 -> hour
-       , commands = [ Run Network "eth0" [ "-L", "8", "-H", "32"
-                                         , "-l", "#C9A34E", "-n", "#429942"
-                                         , "-h", "#A36666"
-                                         , "-t", "<dev>: <rx> / <tx>"
-                                         ] 300
+       , commands = [ Run DynNetwork [ "-L", "8", "-H", "32"
+                                     , "-l", "#C9A34E", "-n", "#429942"
+                                     , "-h", "#A36666"
+                                     , "-t", "<dev>: <rx> / <tx>"
+                                     ] 300
                     , Run Weather "LGAV" [ "-t", "<skyCondition> <tempC>C"
                                          , "-L", "10", "-H", "30"
                                          , "-n","#CEFFAC", "-h", "#FFB6B0"
@@ -33,7 +33,7 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                                   , "--high"     , "darkgreen"
                                   , "--" -- battery specific options
                                   -- see /sys/class/power_supply/BAT0/
-                                  , "-c", "energy_full"
+                                  -- , "-c", "energy_full"
                                   -- discharging status
                                   , "-o" , "DC"
                                   -- AC "on" status
@@ -53,5 +53,5 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %eth0% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% <fc=#429942>|</fc> %LGAV% "
+       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% <fc=#429942>|</fc> %LGAV% "
        }
