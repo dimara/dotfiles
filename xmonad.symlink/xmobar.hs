@@ -34,11 +34,12 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                                   , "--" -- battery specific options
                                   -- see /sys/class/power_supply/BAT0/
                                   -- , "-c", "energy_full"
-                                  -- discharging status
-                                  , "-o" , "DC"
                                   -- AC "on" status
-                                  -- , "-O" , "<fc=green>AC</fc>"
                                   , "-O" , "AC"
+                                  , "-i" , "FULL"
+                                  -- AC "off" status
+                                  , "-o" , "DC"
+                                  -- , "-O" , "<fc=green>AC</fc>"
                                   ] 600
                     , Run Kbd [ ("us", "us")
                               , ("gr", "gr")
