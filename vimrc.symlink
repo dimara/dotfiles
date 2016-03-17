@@ -59,7 +59,7 @@ set textwidth=0
 set nolist " do not show $ at EOL
 set wrapmargin=0
 set softtabstop=2   " tab space
-set tabstop=4
+set tabstop=2
 set shiftwidth=2
 set expandtab
 set nojoinspaces
@@ -100,7 +100,7 @@ set smartcase
 " -----------------------------------------------------------------------------
 if has("autocmd")
 " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType {make,c,cpp} set noexpandtab
+  au FileType {make,c,cpp,conf} set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " Make sure all mardown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt,rst} setf markdown | call SetupWrapping()
@@ -109,7 +109,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.json set ft=javascript
 
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
+  au FileType python set expandtab softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
 
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
