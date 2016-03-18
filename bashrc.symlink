@@ -102,15 +102,21 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+# Enable programmable completion features
+# This is enabled for login shells usually with /etc/profile.d/bash_completion.sh
+# Since profile is sourced before bashrc here we might end having
+# the bash completion scripts sourced already.
+# It seems to be a bug with wheezy if we source it twice so here
+# we mimic both profile.d and bash.bashrc behaviors
+if [ -z "$BASH_VERSION" -o -z "$PS1" -o -n "$BASH_COMPLETION_COMPAT_DIR" ]; then
+	:;
+elif ! shopt -oq posix && shopt -q progcomp; then
+	if [ -r /usr/share/bash-completion/bash_completion ]; then
+		# Source completion code.
+		. /usr/share/bash-completion/bash_completion
+	elif [ -r /etc/bash_completion ]; then
+		. /etc/bash_completion
+    fi
 fi
 
 # Private bashrc
