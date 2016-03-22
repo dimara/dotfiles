@@ -67,7 +67,7 @@ set formatoptions+=n " support for numbered/bullet lists
 
 function SetupWrapping()
   set textwidth=80
-  set linebreak
+  "set linebreak
   set wrapmargin=1
   set formatoptions+=t
 endfunction
