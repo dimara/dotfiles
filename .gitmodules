@@ -16,3 +16,6 @@
 [submodule "vim.symlink/bundle/vim-xkbswitch"]
 	path = vim.symlink/bundle/vim-xkbswitch
 	url = http://github.com/lyokha/vim-xkbswitch
+[submodule "vim.symlink/bundle/vim-ansible-yaml"]
+	path = vim.symlink/bundle/vim-ansible-yaml
+	url = https://github.com/chase/vim-ansible-yaml
