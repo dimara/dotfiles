@@ -111,6 +111,9 @@ if has("autocmd")
 " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
   au FileType python set expandtab softtabstop=2 tabstop=2 shiftwidth=2 textwidth=79
 
+" yaml rules
+  au FileType yaml set expandtab softtabstop=2 tabstop=2 shiftwidth=2
+
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
