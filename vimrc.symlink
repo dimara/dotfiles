@@ -258,3 +258,50 @@ let g:git_ci_msg_user = substitute(system("git config --get user.name"), '\n$', 
 let g:git_ci_msg_email = substitute(system("git config --get user.email"), '\n$', '', '')
 nnoremap <Leader>r "=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>pA
 inoremap <Leader>r <C-R>=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>
+
+function XKBLayoutGetUS()
+  call XKBLayoutBackup()
+  let g:xkb_layout_cnt = system("xkblayout-state print %C")
+  let c = 0
+  while c < g:xkb_layout_cnt
+    call system("xkblayout-state set " . c)
+    call system("xkblayout-state print %s | grep us")
+    if !v:shell_error
+      let g:xkb_layout_num_us = c
+      let g:xkb_layout_sym_us = "us"
+      break
+    endif
+    let c += 1
+  endwhile
+  " FIXME: What if us layout not found
+  call XKBLayoutRestore()
+endfunction
+
+function XKBLayoutGetCurrent()
+  let g:xkb_layout_num_current = system("xkblayout-state print %c")
+  let g:xkb_layout_sym_current = system("xkblayout-state print %s")
+endfunction
+
+function XKBLayoutBackup()
+  call XKBLayoutGetCurrent()
+  let g:xkb_layout_num_backup = g:xkb_layout_num_current
+  let g:xkb_layout_sym_backup = g:xkb_layout_sym_current
+endfunction
+
+function XKBLayoutSwitch()
+  call XKBLayoutBackup()
+  call system("xkblayout-state set " . g:xkb_layout_num_us)
+endfunction
+
+function XKBLayoutRestore()
+  call system("xkblayout-state set " . g:xkb_layout_num_backup)
+endfunction
+
+let g:current_display = $DISPLAY
+
+" FIXME: How to determine if we are running on X or not?
+if !empty(g:current_display) && executable("xkblayout-state")
+  call XKBLayoutGetUS()
+  autocmd InsertLeave * call XKBLayoutSwitch()
+  autocmd InsertEnter * call XKBLayoutRestore()
+endif
