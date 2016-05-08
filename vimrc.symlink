@@ -20,7 +20,7 @@ let g:airline#extensions#default#section_truncate_width = {
 " Pass some arguments to syntax_checkers
 let g:syntastic_enable_balloons = 0
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_python_checkers = ['python', 'pep8', 'pylint']
+let g:syntastic_python_checkers = ['python', 'pep8', 'pylint', 'flake8']
 let g:syntastic_c_gcc_args = ' -Wall -Wextra '
 
 " Disable specific bundle
