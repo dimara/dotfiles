@@ -268,12 +268,10 @@ function XKBLayoutGetUS()
     call system("xkblayout-state print %s | grep us")
     if !v:shell_error
       let g:xkb_layout_num_us = c
-      let g:xkb_layout_sym_us = "us"
       break
     endif
     let c += 1
   endwhile
-  " FIXME: What if us layout not found
   call XKBLayoutRestore()
 endfunction
 
@@ -290,7 +288,10 @@ endfunction
 
 function XKBLayoutSwitch()
   call XKBLayoutBackup()
-  call system("xkblayout-state set " . g:xkb_layout_num_us)
+  if exists("g:xkb_layout_num_us")
+    call system("xkblayout-state set " . g:xkb_layout_num_us)
+    echo "Switched to 'us' keyboard layout"
+  endif
 endfunction
 
 function XKBLayoutRestore()
@@ -299,7 +300,6 @@ endfunction
 
 let g:current_display = $DISPLAY
 
-" FIXME: How to determine if we are running on X or not?
 if !empty(g:current_display) && executable("xkblayout-state")
   call XKBLayoutGetUS()
   autocmd InsertLeave * call XKBLayoutSwitch()
