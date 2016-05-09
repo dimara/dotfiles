@@ -124,9 +124,9 @@ endif
 " -----------------------------------------------------------------------------
 "  Mapping
 " -----------------------------------------------------------------------------
-set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR
-set langmap+=ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj
-set langmap+=κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
+"set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR
+"set langmap+=ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj
+"set langmap+=κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
 
 " setup mapleader
 let mapleader=","
@@ -147,9 +147,9 @@ command! DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 " Better way to enter command line (get rid of pointless shift)
 " In order to :wq when in greek use ;ς; (qwq) or shift+;;+w+q
 nnoremap ; :
-cnoremap ς w
-cnoremap ; q
-nnoremap ¨ :
+"cnoremap ς w
+"cnoremap ; q
+"nnoremap ¨ :
 
 """---------------------
 """# New Movement Keys #
@@ -228,7 +228,7 @@ inoremap jk <Esc>
 inoremap jj <Esc>
 inoremap ξξ <Esc>
 
-vnoremap γ; gq
+"vnoremap γ; gq
 
 " Similar format with the date command
 " # dimara, Mon Jan  5 20:15:11 EET 2015
