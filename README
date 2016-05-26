@@ -20,7 +20,7 @@ rm /usr/share/vim/vim73/spell/*.sug
 virtualenvwrapper
 -----------------
 
-pip install virtualenvwrapper
+apt-get install virtualenvwrapper
 
 http://docs.python-guide.org/en/latest/dev/virtualenvs/#virtualenvwrapper
 

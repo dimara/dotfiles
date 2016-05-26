@@ -127,6 +127,6 @@ fi
 # VirtualEnvWrapper
 # pip install virtualenvwrapper
 WORKON_HOME=~/VirtualEnvs
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    . /usr/local/bin/virtualenvwrapper.sh
+if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
+    . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
