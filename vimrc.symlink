@@ -307,3 +307,5 @@ if !empty(g:current_display) && executable("xkblayout-state")
   autocmd InsertLeave * call XKBLayoutSwitch()
   autocmd InsertEnter * call XKBLayoutRestore()
 endif
+
+nnoremap ξξ :call XKBLayoutSwitch()<CR>
