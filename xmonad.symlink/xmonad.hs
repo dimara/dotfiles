@@ -40,7 +40,12 @@ winMask = mod4Mask
 myModMask = mod1Mask
 
 myBorderWidth :: Dimension
-myBorderWidth = 1
+myBorderWidth = 2
+-- http://htmlcolorcodes.com/
+-- white
+myNormalBorderColor = "#FFFFFF"
+-- red
+myFocusedBorderColor = "#FF0008"
 
 -- -------------------------------------------------------------------
 -- Status bars and logging
@@ -58,7 +63,7 @@ myLogHook xmproc = do
 myWorkSpaces :: [String]
 myWorkSpaces =
   [ "1:mail", "2:web", "3:talk", "4:code", "5:media"
-  , "6:vbox", "7:code", "8:code", "9:code", "0:bash"
+  , "6:vbox", "7:code", "8:code", "9:code", "0:code"
   ]
 
 
@@ -82,9 +87,10 @@ myManageHook = composeAll
   , className =? "Skype"                 --> doShift "3:talk"
   , className =? "Pidgin"                --> doShift "3:talk"
   , className =? "Galculator"            --> doFloat
-  , className =? "MPlayer"               --> doShift "5:media"
-  , className =? "Vlc"                   --> doShift "5:media"
-  , className =? "Eog"                   --> doShift "5:media"
+  -- , className =? "Vncviewer"             --> doFloat
+  -- , className =? "MPlayer"               --> doShift "5:media"
+  -- , className =? "Vlc"                   --> doShift "5:media"
+  -- , className =? "Eog"                   --> doShift "5:media"
   , className =? "VirtualBox"            --> doShift "6:vbox"
   , className =? "rdesktop"              --> doShift "6:vbox"
   , className =? "remmina"               --> doShift "6:vbox"
@@ -169,6 +175,8 @@ main = do
     , workspaces  = myWorkSpaces
     , modMask     = myModMask
     , borderWidth = myBorderWidth
+    , normalBorderColor = myNormalBorderColor
+    , focusedBorderColor  = myFocusedBorderColor
     , manageHook  = myManageHook <+> manageHook defaultConfig
     , layoutHook  = myLayoutHook
     , logHook     = myLogHook xmproc
