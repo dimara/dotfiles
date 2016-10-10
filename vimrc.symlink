@@ -101,6 +101,8 @@ set smartcase
 "  Specail File Cases
 " -----------------------------------------------------------------------------
 if has("autocmd")
+" FIXME: This is probably to much.. Maybe {python,yml}
+  au Filetype * set indentkeys-=<:> indentkeys-=:
 " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType {make,c,cpp,conf} set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
 
