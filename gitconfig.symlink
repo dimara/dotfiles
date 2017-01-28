@@ -13,7 +13,7 @@
 	interactive = auto
 	ui = 1
 [merge]
-  tool = meld
+  tool = vimdiff
 [alias]
   ci = commit
   co = checkout
