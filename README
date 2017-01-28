@@ -31,6 +31,21 @@ apt-get install xmonad xmobar suckless-tools slim rxvt-unicode-256color \
                 xscreensaver lxappearance gnupg-agent hsetroot scrot xcompmgr \
                 xbacklight laptop-mode-tools
 
+For laptop-mode-tools:
+
+/etc/laptop-mode/conf.d/auto-hibernate.conf:
+ENABLE_AUTO_HIBERNATION=1
+HIBERNATE_COMMAND=/usr/share/laptop-mode-tools/module-helpers/pm-suspend
+
+
+/etc/laptop-mode/conf.d/cpufreq.conf:
+CONTROL_CPU_FREQUENCY=0
+
+/etc/laptop-mode/conf.d/ethernet.conf:
+CONTROL_ETHERNET=0
+
+
+
 # This is from jessie
 apt-get install xss-lock
 
