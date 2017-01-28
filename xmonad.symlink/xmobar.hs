@@ -14,11 +14,12 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                                      , "-h", "#A36666"
                                      , "-t", "<dev>: <rx> / <tx>"
                                      ] 300
-                    , Run Weather "LGAV" [ "-t", "<skyCondition> <tempC>C"
-                                         , "-L", "10", "-H", "30"
-                                         , "-n","#CEFFAC", "-h", "#FFB6B0"
-                                         ,"-l","#96CBFE"
-                                         ] 18000
+                    -- http://weather.noaa.gov/: This Service is no longer available
+                    -- , Run Weather "LGAV" [ "-t", "<skyCondition> <tempC>C"
+                    --                      , "-L", "10", "-H", "30"
+                    --                      , "-n","#CEFFAC", "-h", "#FFB6B0"
+                    --                      ,"-l","#96CBFE"
+                    --                      ] 1200
                     , Run Cpu [ "-L", "3", "-H", "50"
                               , "--normal", "#429942"
                               , "--high", "#A36666"
@@ -54,5 +55,5 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% <fc=#429942>|</fc> %LGAV% "
+       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% "
        }
