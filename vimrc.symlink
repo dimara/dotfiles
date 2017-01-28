@@ -102,7 +102,7 @@ set smartcase
 " -----------------------------------------------------------------------------
 if has("autocmd")
 " FIXME: This is probably to much.. Maybe {python,yml}
-  au Filetype * set indentkeys-=<:> indentkeys-=:
+  au Filetype * set indentkeys-=<:> indentkeys-=: indentkeys-=<-> indentkeys-=-
 " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType {make,c,cpp,conf} set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
 
@@ -212,7 +212,7 @@ endfunction
 
 
 "autocmd BufWritePost *.py call Flake8()
-autocmd Filetype gitcommit set expandtab textwidth=68 spell
+autocmd Filetype gitcommit,mail set expandtab textwidth=68 spell
 map j gj
 map k gk
 "map <space> /
