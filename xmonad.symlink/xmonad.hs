@@ -86,6 +86,7 @@ myManageHook = composeAll
   , resource  =? "Dialog"                --> doFloat
   , className =? "Skype"                 --> doShift "3:talk"
   , className =? "Pidgin"                --> doShift "3:talk"
+  , className =? "TelegramDesktop"       --> doShift "3:talk"
   , className =? "Galculator"            --> doFloat
   -- , className =? "Vncviewer"             --> doFloat
   -- , className =? "MPlayer"               --> doShift "5:media"

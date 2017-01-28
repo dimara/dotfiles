@@ -38,7 +38,8 @@ urxvtd -q -f -o
 #eval $(ssh-agent --daemon)
 
 # start desired apps
-pidgin &
+#pidgin &
+Telegram &
 skype &
 
 exec xmonad
