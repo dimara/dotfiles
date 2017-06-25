@@ -62,8 +62,8 @@ myLogHook xmproc = do
 -- Workspaces
 myWorkSpaces :: [String]
 myWorkSpaces =
-  [ "1:mail", "2:web", "3:talk", "4:code", "5:media"
-  , "6:vbox", "7:code", "8:code", "9:code", "0:code"
+  [ "1:mail", "2:web", "3:im", "4:web", "5:media"
+  , "6:code", "7:code", "8:code", "9:code", "0:code"
   ]
 
 
@@ -84,17 +84,18 @@ myManageHook :: Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
   [ resource  =? "desktop_window"        --> doIgnore
   , resource  =? "Dialog"                --> doFloat
-  , className =? "Skype"                 --> doShift "3:talk"
-  , className =? "Pidgin"                --> doShift "3:talk"
-  , className =? "TelegramDesktop"       --> doShift "3:talk"
+  , className =? "Skype"                 --> doShift "3:im"
+  , className =? "Pidgin"                --> doShift "3:im"
+  , className =? "TelegramDesktop"       --> doShift "3:im"
   , className =? "Galculator"            --> doFloat
   -- , className =? "Vncviewer"             --> doFloat
   -- , className =? "MPlayer"               --> doShift "5:media"
   -- , className =? "Vlc"                   --> doShift "5:media"
   -- , className =? "Eog"                   --> doShift "5:media"
-  , className =? "VirtualBox"            --> doShift "6:vbox"
-  , className =? "rdesktop"              --> doShift "6:vbox"
-  , className =? "remmina"               --> doShift "6:vbox"
+  , className =? "VirtualBox"            --> doShift "5:media"
+  , className =? "rdesktop"              --> doShift "5:media"
+  , className =? "remmina"               --> doShift "5:media"
+  , className =? "stalonetray"           --> doIgnore
   -- , isFullscreen --> (doF S.focusDown <+> doFullFloat)
   , manageDocks
   ]
@@ -102,10 +103,16 @@ myManageHook = composeAll
 -- -------------------------------------------------------------------
 -- Layouts
 myLayoutHook = avoidStruts
-  $ onWorkspace "1:mail" common
-  $ onWorkspace "2:web" common
-  $ onWorkspace "3:talk" im
-  $ onWorkspace "6:vbox" (full ||| tall)
+  $ onWorkspace "1:mail" full
+  $ onWorkspace "2:web" full
+  $ onWorkspace "3:im" im
+  $ onWorkspace "4:web" full
+  $ onWorkspace "5:media" full
+  $ onWorkspace "6:code" common
+  $ onWorkspace "7:code" common
+  $ onWorkspace "8:code" common
+  $ onWorkspace "9:code" common
+  $ onWorkspace "0:code" common
   $ standardLayouts
     where
   standardLayouts = tall ||| grid ||| full ||| mirror ||| float ||| three
@@ -126,8 +133,8 @@ myLayoutHook = avoidStruts
     pidginRoster = (And (ClassName "Pidgin") (Role "buddy_list"))
     skypeRoster = (And (ClassName "Skype") (Title "dimitris.aragiorgis - Skype™"))
 
-  --Web Layout
-  common = full ||| mirror ||| tall
+  --Common Layout
+  common = tall ||| full ||| mirror ||| grid
 
 -- -------------------------------------------------------------------
 -- Additional Keys
