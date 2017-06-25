@@ -126,7 +126,7 @@ fi
 
 # VirtualEnvWrapper
 # pip install virtualenvwrapper
-WORKON_HOME=~/VirtualEnvs
+WORKON_HOME=~/venv
 if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
     . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
