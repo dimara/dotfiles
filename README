@@ -17,6 +17,14 @@ apt-get install vim-scripts
 rm /usr/share/vim/vim73/spell/*.spl
 rm /usr/share/vim/vim73/spell/*.sug
 
+command-t
+---------
+
+apt-get install ruby ruby-dev
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb
+make
+
 virtualenvwrapper
 -----------------
 
