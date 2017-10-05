@@ -158,6 +158,9 @@ nnoremap ; :
 "cnoremap ; q
 "nnoremap ¨ :
 
+"Go to first line in location list (useful for synstastic errors)
+nnoremap <tab> :ll<CR>
+
 """---------------------
 """# New Movement Keys #
 """---------------------
