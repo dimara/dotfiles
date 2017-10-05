@@ -118,6 +118,9 @@ if has("autocmd")
 " yaml rules
   au FileType yaml set expandtab softtabstop=2 tabstop=2 shiftwidth=2
 
+" bash rules
+  au FileType sh set noexpandtab softtabstop=8 tabstop=8 shiftwidth=2
+
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
