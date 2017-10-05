@@ -1,4 +1,4 @@
-alias less='less -FRSX'
+alias less='less -FRX'
 alias x='exit'
 alias t='gnome-terminal --hide-menubar'
 alias v='vim'
