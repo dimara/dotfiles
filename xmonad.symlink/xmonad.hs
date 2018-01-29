@@ -87,6 +87,7 @@ myManageHook = composeAll
   , className =? "Skype"                 --> doShift "3:im"
   , className =? "Pidgin"                --> doShift "3:im"
   , className =? "TelegramDesktop"       --> doShift "3:im"
+  , className =? "viber"                 --> doShift "3:im"
   , className =? "Galculator"            --> doFloat
   -- , className =? "Vncviewer"             --> doFloat
   -- , className =? "MPlayer"               --> doShift "5:media"
@@ -105,7 +106,7 @@ myManageHook = composeAll
 myLayoutHook = avoidStruts
   $ onWorkspace "1:mail" full
   $ onWorkspace "2:web" full
-  $ onWorkspace "3:im" im
+  $ onWorkspace "3:im" full
   $ onWorkspace "4:web" full
   $ onWorkspace "5:media" full
   $ onWorkspace "6:code" common
@@ -126,6 +127,8 @@ myLayoutHook = avoidStruts
   mirror = named "Mirror" $ Mirror tall
 
   --Im Layout
+  --NOTE: Since skype does not have separate chat windows this
+  --      is not used any more..
   im = named "IM"
     $ withIM (0.18) pidginRoster $ reflectHoriz
     $ withIM (0.22) skypeRoster (grid ||| full)
