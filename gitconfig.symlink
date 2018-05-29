@@ -1,17 +1,17 @@
 [user]
-	name = Dimitris Aragiorgis
-	email = dimitris.aragiorgis@gmail.com
+  name = Dimitris Aragiorgis
+  email = dimitris.aragiorgis@gmail.com
 [branch]
   autosetuprebase = always
 [core]
-  pager = less -FRSX
+  pager = less -FRSX -j.5
   editor = vim
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = 1
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = auto
 [merge]
   tool = vimdiff
 [alias]
@@ -27,11 +27,11 @@
   cached = diff --cached
   c = checkout @{-1}
 [diff]
-	tool = meld
+  tool = meld
 [help]
-	autocorrect = 1
+  autocorrect = 1
 [credential]
-	helper = cache
+  helper = cache
   timeout = 120000
 [pull]
   rebase = True
@@ -47,3 +47,5 @@
 [dch]
   author = Dimitris Aragiorgis
   email = dimitris.aragiorgis@gmail.com
+[gitreview]
+  username = dimara
