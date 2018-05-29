@@ -40,6 +40,6 @@ urxvtd -q -f -o
 # start desired apps
 #pidgin &
 Telegram &
-skype &
+skypeforlinux &
 
 exec xmonad
