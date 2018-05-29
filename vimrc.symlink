@@ -121,6 +121,9 @@ if has("autocmd")
 " bash rules
   au FileType sh set noexpandtab softtabstop=8 tabstop=8 shiftwidth=2
 
+" rEST rules
+  au FileType rst set expandtab softtabstop=3 tabstop=3 shiftwidth=3 spell
+
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
@@ -218,7 +221,7 @@ endfunction
 
 
 "autocmd BufWritePost *.py call Flake8()
-autocmd Filetype gitcommit,mail set expandtab textwidth=68 spell
+autocmd Filetype gitcommit,mail set expandtab textwidth=72 spell
 map j gj
 map k gk
 "map <space> /
@@ -306,6 +309,7 @@ endfunction
 
 function XKBLayoutRestore()
   call system("xkblayout-state set " . g:xkb_layout_num_backup)
+  "echo "Switched to '" . g:xkb_layout_sym_current . "' keyboard layout"
 endfunction
 
 let g:current_display = $DISPLAY
@@ -317,3 +321,6 @@ if !empty(g:current_display) && executable("xkblayout-state")
 endif
 
 nnoremap ξξ :call XKBLayoutSwitch()<CR>
+
+"Load .bashrc and make :! shell behave like our command prompts (i.e., with aliases)
+"set shellcmdflag=-ic
