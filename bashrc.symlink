@@ -130,3 +130,5 @@ WORKON_HOME=~/venv
 if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
     . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
+
+export EDITOR=vim
