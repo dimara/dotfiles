@@ -46,6 +46,14 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                     , Run Kbd [ ("us", "us")
                               , ("gr", "gr")
                               ]
+                    -- FIXME: What about core{1.3}??
+                    , Run CoreTemp [ "--template" , "Temp: <core0>°C"
+                                   , "--Low"      , "70"        -- units: °C
+                                   , "--High"     , "80"        -- units: °C
+                                   , "--low"      , "darkgreen"
+                                   , "--normal"   , "darkorange"
+                                   , "--high"     , "darkred"
+                                   ] 300
                     -- Debian xmobar is not compile with wireless suport
                     -- Once they do use %wlan0wi% in final template
                     -- , Run Wireless [] 100
@@ -56,5 +64,5 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% "
+       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %coretemp% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% "
        }
