@@ -4,6 +4,7 @@
 xcompmgr -t-5 -l-6 -r5 &
 
 # start notification-daemon needed by e.g. pidgin
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648378
 /usr/lib/notification-daemon/notification-daemon &
 
 # set the cursor as pointer
