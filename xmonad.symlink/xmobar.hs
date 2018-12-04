@@ -3,7 +3,8 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
        , fgColor = "#C9A34E"
        , border = NoBorder
        , borderColor = "#000000"
-       , position = Top
+       -- , position = Top
+       , position = Static { xpos = 0 , ypos = 0, width = 1365, height = 16 }
        -- interval are tenth of seconds, e.g:
        --  10 -> second
        --  600 -> minute

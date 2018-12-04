@@ -1,0 +1,21 @@
+background "#000000"
+transparent false
+#parent_bg true
+#transparent true
+# bottom-right corner of laptop
+# xrandr - icon size
+# 1366x768
+#geometry 5x1+1340+760
+# bottom right corner of the laptop screen
+#geometry 1x1+1350+752
+geometry 1x1+680+0
+grow_gravity E
+sticky true
+window_strut none
+max_geometry 0x0
+icon_gravity E
+# Also height in xmobar
+icon_size 16
+kludges force_icons_size
+#window_strut top
+#window_layer top
