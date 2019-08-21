@@ -132,3 +132,7 @@ if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
 fi
 
 export EDITOR=vim
+
+# Prefer the classical middle-click/paste
+# https://wiki.archlinux.org/index.php/Pass
+export PASSWORD_STORE_X_SELECTION=primary
