@@ -63,3 +63,16 @@ reboot
 
 Uncomment LID_SLEEP=true in /etc/default/acpi-support so that
 /etc/acpi/lid.sh will suspend the PC upon lid close.
+
+pulseaudio
+----------
+
+Prevent applications from auto-adjusting mic gain:
+
+sudo sed -i.bak 's/volume = merge/volume = zero/' /usr/share/pulseaudio/alsa-mixer/paths/analog-input-mic.conf
+pulseaudio -k
+pavucontrol
+
+https://askubuntu.com/questions/279407/how-to-disable-microphone-from-auto-adjusting-its-input-volume
+https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#Enable_Echo/Noise-Cancellation
+https://nzeid.net/pulseaudio-disable-auto-volume
