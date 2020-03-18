@@ -1,5 +1,16 @@
+/* https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/ */
+/* https://github.com/simmel/urxvt-resize-font */
+! URxvt.resize-font.smaller: C-minus
+! URxvt.resize-font.bigger:  C-equal
+URxvt.resize-font.step: 2
+/* https://github.com/majutsushi/urxvt-font-size */
+! URxvt.keysym.C-minus:     perl:resize-font:smaller
+! URxvt.keysym.C-plus:      perl:resize-font:bigger
+! URxvt.keysym.C-equal:     perl:resize-font:reset
+! URxvt.keysym.C-question:  perl:resize-font:show
+
 /* turn url highlight on */
-URxvt.perl-ext-common: default,matcher
+URxvt.perl-ext-common: default,matcher,resize-font
 URxvt.urlLauncher: x-www-browser
 URxvt.matcher.button: 1
 ! URxvt.matcher.pattern.1: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
