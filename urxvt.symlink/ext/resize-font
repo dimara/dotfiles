@@ -31,6 +31,7 @@ sub on_start {
 
   foreach (@fonts) {
     $_->{'default'} = $self->resource($_->{'name'});
+    my $lala = $_->{'default'} ;
   }
 
   $step = $self->x_resource("%.step") || 2;
@@ -62,7 +63,8 @@ sub bind_hotkeys {
       }
 
       # FIXME If we're bound to a keysym, don't bind the default.
-      $self->bind_action($hotkey, "%:$_") or
+      # dimara: use deprecated parse_keysym instead of bind_action
+      $self->parse_keysym($hotkey, "perl:resize-font:$_") or
       warn "unable to register '$hotkey' as hotkey for $_";
     }
     else {
@@ -74,8 +76,12 @@ sub bind_hotkeys {
   }
 }
 
-sub on_action {
+# dimara: use on_user_command instead of on_action
+sub on_user_command {
   my ($self, $string) = @_;
+
+  # dimara: string contains the module prefix
+  $string =~ s/resize-font://;
 
   if ($string eq "bigger") {
     foreach (@fonts) {
