@@ -26,6 +26,7 @@
   f = commit --amend --no-edit
   cached = diff --cached
   c = checkout @{-1}
+  latest = for-each-ref --sort=-committerdate --format='%(color:green)[%(committerdate:relative)]%(color:reset) %(color:yellow)(%(refname:short))%(color:reset) %(subject) %(color:yellow)%(authoremail)%(color:reset)'
 [diff]
   tool = meld
 [help]
