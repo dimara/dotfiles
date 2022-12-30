@@ -108,7 +108,7 @@ myLayoutHook = avoidStruts
   $ onWorkspace "2:web" full
   $ onWorkspace "3:im" full
   $ onWorkspace "4:web" full
-  $ onWorkspace "5:media" full
+  $ onWorkspace "5:media" common
   $ onWorkspace "6:code" common
   $ onWorkspace "7:code" common
   $ onWorkspace "8:code" common
@@ -150,10 +150,13 @@ myKeys =
   , ((0, xF86XK_MonBrightnessDown), spawn "xbacklight -20")
   , ((0, xK_Print), spawn "scrot -q 1 $HOME/Pictures/Screenshots/%Y-%m-%d-%H:%M:%S.png")
   , ((altMask .|. shiftMask, xK_BackSpace), spawn "xscreensaver-command -lock")
-  , ((altMask, xK_p), spawn "dmenu_run -fn BitstreamVeraSansMono:size=10:dpi=168:antialias=true")
+  -- systemd-logind does not jet support HandlelidSwitchDocked
+  , ((altMask .|. shiftMask, xK_Delete), spawn "sudo pm-suspend")
+  , ((altMask, xK_p), spawn "dmenu_run -fn BitstreamVeraSansMono:size=8:antialias=true")
   , ((altMask, xK_Return), spawn myTerminal)
   , ((altMask .|. shiftMask, xK_Return), windows S.swapMaster)
   , ((altMask, xK_i), spawn myBrowser)
+  , ((altMask .|. shiftMask, xK_i), spawn myBrowserArrikto)
   , ((altMask, xK_w), kill)
   , ((altMask, xK_t), withFocused $ windows . S.sink)
   , ((altMask, xK_f), withFocused $ float)

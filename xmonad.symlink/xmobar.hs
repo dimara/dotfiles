@@ -1,10 +1,14 @@
-Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
+Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
        , bgColor = "#000000"
        , fgColor = "#C9A34E"
        , border = NoBorder
        , borderColor = "#000000"
        -- , position = Top
+       -- https://hackage.haskell.org/package/xmobar-0.8/src/README.html
        , position = Static { xpos = 0 , ypos = 0, width = 1365, height = 16 }
+       -- , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 16 }
+       -- Works but is too thin and does not fit stalonetray..
+       -- , position = Top C 100
        -- interval are tenth of seconds, e.g:
        --  10 -> second
        --  600 -> minute
@@ -61,8 +65,9 @@ Config { font = "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-u"
                     -- Once they do use %default:Master% in final template
                     -- , Run Volume "default" "Master" [] 10
                     , Run StdinReader
+                    , Run Com ".xmonad/padding-icon.sh" ["stalonetray"] "tray" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %coretemp% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% "
+       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %coretemp% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% %tray%"
        }
