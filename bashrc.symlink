@@ -157,3 +157,7 @@ alias jwth="decode_jwt 1"
 # Decode JWT Payload
 alias jwtp="decode_jwt 2"
 
+epoch2date() {
+	ts=$1
+	date --iso-8601=sec -u -d @$ts
+}
