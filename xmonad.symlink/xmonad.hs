@@ -32,7 +32,9 @@ import qualified XMonad.StackSet as S
 
 myTerminal, myBrowser :: [Char]
 myTerminal = "urxvt"
-myBrowser = "google-chrome-stable"
+-- See created profiles under .config/google-chrome/
+myBrowser = "google-chrome-stable --profile-directory='Default'"
+myBrowserArrikto = "google-chrome-stable --profile-directory='Profile 1'"
 
 altMask, winMask, myModMask :: KeyMask
 altMask = mod1Mask
