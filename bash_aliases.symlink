@@ -26,3 +26,5 @@ fi
 
 alias pbcopy="xclip -selection c"
 alias pbpaste="xclip -selection clipboard -o"
+
+alias screen-mutt='screen -c ~/.mutt/screenrc -S mutt -R'

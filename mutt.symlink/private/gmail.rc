@@ -1,0 +1,7 @@
+source ~/.muttrc
+set from = 'dimitris.aragiorgis@gmail.com'
+set hostname = 'gmail.com'
+set smtp_pass = "`pass google/dimitris.aragiorgis@gmail.com/asp/fetchmail`"
+set smtp_url = 'smtp://dimitris.aragiorgis@smtp.gmail.com:587'
+my_hdr From: Dimitris Aragiorgis <dimitris.aragiorgis@gmail.com>
+color status brightwhite magenta

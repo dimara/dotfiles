@@ -1,0 +1,10 @@
+macro pager ,b <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
+macro index ,f "<search>~F<enter>" "Move to next tagged message"
+
+macro index ,m "T~N<enter>;WNT~O<enter>;WO\CT~T<enter><sync-mailbox>" "mark all messages read"
+
+macro index ,d "<delete-pattern>~d >1d<enter><sync-mailbox>" "delete old messages"
+macro index ,u "<undelete-pattern>~d >1d<enter>" "undelete old messages"
+
+macro index ,g "<tag-prefix><pipe-message>cat > $HOME/git-am/patch<enter>" "save tagged patches in mbox ~/git-am/patch"

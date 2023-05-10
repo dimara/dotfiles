@@ -1,0 +1,63 @@
+# -*- muttrc -*-
+
+# Null out any folder specific keys.
+bind index @ noop
+
+# Start off with index footer in pager.
+set pager_index_lines=15
+
+# Reset any headers that may have been set in other folder-hooks
+unmy_hdr From:
+unmy_hdr Reply-To:
+unmy_hdr Fcc:
+unmy_hdr Return-Receipt-To:
+unmy_hdr Organization:
+unmy_hdr X-URL:
+
+
+# This is the index format for non-list folders.
+set index_format="%4C %Z    %{%b %d}    %-45.40F     %s"
+
+# Sort by date-sent
+set sort=date-sent
+
+# By default use the default value for abort_nosubject
+reset abort_nosubject
+
+# Always verify signatures by default.
+set pgp_verify_sig
+set pgp_autosign=yes
+set pgp_sign_as=7A0811BD
+
+# Sort on threads
+set sort=threads
+
+# Give mailing lists a more "slrn" like feel.
+set pager_index_lines=20
+
+# Headers order
+unignore Date:
+hdr_order From: To: CC: BCC: Reply-To: Mail-Followup-To: Date: Subject: Organization: User-Agent: X-Mailer:
+
+# Default headers
+set from = 'dimitris.aragiorgis@gmail.com'
+set realname = "Dimitris Aragiorgis"
+my_hdr X-URL: http://www.cslab.ece.ntua.gr/~dimara/
+my_hdr X-PGP-Key: http://www.cslab.ece.ntua.gr/~dimara/keys/pubring.gpg
+my_hdr From: Dimitris Aragiorgis <dimitris.aragiorgis@gmail.com>
+
+# My emails
+alternates dimara@cslab.ece.ntua.gr|dimitris.aragiorgis@gmail.com|dimara@grnet.gr|jim@dimara.net
+
+set spoolfile = "~/Mail/mbox"
+
+# Force the SMTP envelope address to be the From: address
+# This allows Postfix to pick different relayhosts,
+# based on sender_dependent_relayhost_maps, see /etc/postfix/main.cf
+set use_envelope_from = yes
+
+
+# because we are mounting fs with noatime option
+# mutt cannot decide whether folders have new mail or not.
+set check_mbox_size = yes
+

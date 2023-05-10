@@ -1,0 +1,26 @@
+# Muttrc color settings
+
+color attachment       red              black
+color tree             brightgreen      black
+color error            cyan             black
+color normal           white            black
+color indicator        brightblue       black
+color signature        green            black
+color status           white            blue
+color tilde            green            black
+color message          green            black   # info messages
+color search           brightyellow     red     # search matches
+color markers          red              black   # + at beginning of wrapped lines
+color underline        brightblue       black   # hiliting underlined patterns in body
+
+color hdrdefault       cyan	            black
+
+color quoted           brightblue       black
+color quoted1          cyan             black
+color quoted2          green            black
+color quoted3          red              black
+color quoted4          brightblue       black
+color quoted5          cyan             black
+color quoted6          green            black
+color quoted7          red              black
+

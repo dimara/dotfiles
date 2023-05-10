@@ -1,0 +1,13 @@
+source ~/.mutt/muttrc
+source ~/.mutt/auto-views                 # Define auto_views.
+source ~/.mutt/aliases                    # Load in my aliases.
+source ~/.mutt/subscriptions              # Define the list of subscribed mailing lists.
+source ~/.mutt/mailboxes                  # Define the list of folders that receive mail.
+source ~/.mutt/bindings                   # Define key bindings.
+source ~/.mutt/colors                     # Define colours.
+source ~/.mutt/smime.rc
+source ~/.mutt/gpg.rc
+source ~/.mutt/macros
+source ~/.mutt/hooks                      # folder-hooks. save-hooks. fcc-hooks. message-hooks
+source ~/.mutt/defaults
+# source ~/.mutt/sidebar.rc
