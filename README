@@ -76,3 +76,35 @@ pavucontrol
 https://askubuntu.com/questions/279407/how-to-disable-microphone-from-auto-adjusting-its-input-volume
 https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#Enable_Echo/Noise-Cancellation
 https://nzeid.net/pulseaudio-disable-auto-volume
+
+
+Rescan output devices
+
+pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect
+
+https://superuser.com/questions/845645/pulseaudio-how-to-rescan-audio-devices
+
+
+Telegram
+--------
+
+https://github.com/telegramdesktop/tdesktop/issues/9825
+
+https://github.com/telegramdesktop/tdesktop/commit/41e0e4fba703eddfe599ab8935cf0b64549a933f
+
+Use chrome instead of firefox
+
+copy /usr/share/applications/google-chrome.desktop to /usr/share/applications/google-chrome-default.desktop
+and pass --profile-directory=Default
+
+xdg-mime default google-chrome-default.desktop x-scheme-handler/https x-scheme-handler/http
+
+This sets .local/share/applications/mimeapps.list
+
+This breaks slack links since it for some reason it opens incognito with the followin args
+
+--profile-directory=Default --flag-switches-begin --disable-quic --flag-switches-end --origin-trial-disabled-features=CaptureHandle --product-version
+--profile-directory='Default' https://github.com/jthornber/thin-provisioning-tools/issues/192#issuecomment-1005163588 /usr/bin/google-chrome-stable --profile-directory='Default' /usr/bin/google-chrome-stable --incognito https://www.eurosport.com/
+
+workaround: remove /usr/share/applications/firefox-esr.desktop that was referenced in mimeinfo.cache
+and update-alternatives --query x-www-browser
