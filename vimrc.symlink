@@ -20,7 +20,7 @@ let g:airline#extensions#default#section_truncate_width = {
 " Pass some arguments to syntax_checkers
 let g:syntastic_check_on_wq = 0
 "let g:syntastic_check_on_open = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
 let g:syntastic_python_checkers = ['python', 'flake8']
 let g:syntastic_c_gcc_args = ' -Wall -Wextra '
@@ -104,7 +104,7 @@ if has("autocmd")
 " FIXME: This is probably to much.. Maybe {python,yml}
   au Filetype * set indentkeys-=<:> indentkeys-=: indentkeys-=<-> indentkeys-=-
 " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType {make,c,cpp,conf} set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
+  au FileType {make,c,cpp,conf,go} set noexpandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " Make sure all mardown files have the correct filetype set and setup wrapping
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt,rst} setf markdown | call SetupWrapping()
@@ -271,6 +271,10 @@ let g:git_ci_msg_user = substitute(system("git config --get user.name"), '\n$', 
 let g:git_ci_msg_email = substitute(system("git config --get user.email"), '\n$', '', '')
 nnoremap <Leader>r "=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>pA
 inoremap <Leader>r <C-R>=printf("Reviewed-by: %s <%s>", g:git_ci_msg_user, g:git_ci_msg_email)<CR>
+
+let g:date = substitute(system("date --rfc-3339=date"), '\n$', '', '')
+nnoremap <Leader>c "=printf("%s  %s  <%s>", g:date, g:git_ci_msg_user, g:git_ci_msg_email)<CR>pA
+inoremap <Leader>c <C-R>=printf("%s  %s  <%s>", g:date, g:git_ci_msg_user, g:git_ci_msg_email)<CR>
 
 function XKBLayoutGetUS()
   call XKBLayoutBackup()
