@@ -1,6 +1,7 @@
 macro pager ,b <pipe-entry>'urlview'<enter> 'Follow links with urlview'
 
-macro index ,f "<search>~F<enter>" "Move to next tagged message"
+macro index ,ff "<search>~F<enter>" "Move to next important message"
+
 
 macro index ,m "T~N<enter>;WNT~O<enter>;WO\CT~T<enter><sync-mailbox>" "mark all messages read"
 
@@ -8,3 +9,18 @@ macro index ,d "<delete-pattern>~d >1d<enter><sync-mailbox>" "delete old message
 macro index ,u "<undelete-pattern>~d >1d<enter>" "undelete old messages"
 
 macro index ,g "<tag-prefix><pipe-message>cat > $HOME/git-am/patch<enter>" "save tagged patches in mbox ~/git-am/patch"
+
+macro index <Tab> "<search>~F || ~N<enter>" "Move to next unread or important message"
+
+# https://coderwall.com/p/qjmwuq/prompt-for-user-input-in-mutt-macro
+#macro index / "<enter-command>source '/usr/local/bin/mutt-search-everything |'<enter>" "Search everything"
+
+# /usr/local/bin/mutt-search-everything:
+##!/usr/bin/env bash
+#
+#read -p "Search for: " answer
+#
+#printf "push '<search>~B %s | ~h %s'<return>" "$answer" "$answer"
+
+macro index ,fs '<enter-command>set simple_search = "~L %s | ~h %s | ~b %s"<Enter><enter-command> set simple_search<Enter>' "Use full search"
+macro index ,ss '<enter-command>set simple_search = "~L %s | ~s %s"<Enter><enter-command>set simple_search<Enter>' "Use simple search"

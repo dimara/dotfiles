@@ -3,6 +3,7 @@ text/x-diff; vim -R %s
 text/x-patch; vim -R %s
 image/png; eog %s
 image/jpeg; eog %s
+image/jpg; eog %s
 image/gif; eog %s
 image/tiff; eog %s
 application/msword; libreoffice %s
