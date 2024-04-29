@@ -1,0 +1,9 @@
+# Set default values for all following accounts.
+defaults
+auth on
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+# This location is allowed by apparmor
+logfile ~/.msmtp.log
+

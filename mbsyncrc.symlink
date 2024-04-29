@@ -1,0 +1,8 @@
+# --------------------------------------------------------------------
+# Global options
+FSync no
+SyncState *
+Create Near
+CopyArrivalDate yes
+Expunge Both
+
