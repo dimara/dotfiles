@@ -1,0 +1,7 @@
+while true; do
+  date
+  echo Synching mail...
+  mbsync -a -V
+  echo Sleeping for 1m..
+  sleep 1m
+done
