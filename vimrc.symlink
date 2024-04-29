@@ -17,13 +17,25 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'z': 40,
     \ }
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 " Pass some arguments to syntax_checkers
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_wq = 0
-"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_haskell_checkers = ['hdevtools', 'hlint']
-let g:syntastic_python_checkers = ['python', 'flake8']
+let g:syntastic_python_checkers = ['python3', 'flake8', 'pylint']
+" https://github.com/vim-syntastic/syntastic/issues/1759#issuecomment-398639522
+"let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter', 'gofmt']
+"let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_c_gcc_args = ' -Wall -Wextra '
+" https://github.com/fatih/vim-go/wiki/Tutorial#check-it
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
 
 " Disable specific bundle
 "let g:pathogen_disabled = ["syntastic"]
