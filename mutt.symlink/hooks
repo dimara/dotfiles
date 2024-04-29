@@ -17,7 +17,8 @@ message-hook "~h \"X-Mailer: (Microsoft Outlook IMO|Experian ContactMail)\"" "se
 message-hook "~h \"X-Mailer: IncrediMail" "set display_filter='tr -d \\\\r'"
 
 
-fcc-hook 	  .                	        =sent
+# https://marc.info/?l=mutt-users&m=144265724202157&w=2
+fcc-hook 	  .                	        ^
 
 save-hook   .                         =mbox
 
