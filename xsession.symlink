@@ -23,12 +23,6 @@ hsetroot -solid "$BLUE"
 # switch keyboard layout *only* with CapsLock
 setxkbmap -option 'grp:caps_toggle' -layout  'us,gr'
 
-# start xscreensaver deamon
-xscreensaver -no-splash &
-stalonetray &
-# Not available in wheezy
-#xss-lock -- xscreensaver-command -lock &
-
 # start urxvt deamon
 urxvtd -q -f -o
 
@@ -40,8 +34,7 @@ urxvtd -q -f -o
 #eval $(ssh-agent --daemon)
 
 # start desired apps
-#pidgin &
-Telegram &
-skypeforlinux &
+stalonetray &
+nm-applet &
 
 exec xmonad
