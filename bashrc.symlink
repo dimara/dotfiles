@@ -81,7 +81,7 @@ screen_set_window_title () {
 }
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}${GREEN}\u@\h|${NORMAL}:${CYAN}\w${NORMAL}${RED}$(parse_git_branch)${NORMAL}\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}${GREEN}\u@\h${NORMAL}|${POWDER_BLUE}k8s:$(kubectl config current-context|xargs -r basename)${NORMAL}|${YELLOW}aws:${AWS_PROFILE}${NORMAL}|:${CYAN}\w${NORMAL}${RED}$(parse_git_branch)${NORMAL}\n\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h|:\w$(parse_git_branch)\n\$ '
 fi
