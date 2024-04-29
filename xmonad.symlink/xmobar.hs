@@ -66,9 +66,8 @@ Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
                     -- Once they do use %default:Master% in final template
                     -- , Run Volume "default" "Master" [] 10
                     , Run StdinReader
-                    , Run Com ".xmonad/padding-icon.sh" ["stalonetray"] "tray" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %coretemp% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% %tray%"
+       , template = " %StdinReader% }{ %battery% <fc=#429942>|</fc> %cpu% <fc=#429942>|</fc> %coretemp% <fc=#429942>|</fc> %memory% <fc=#429942>|</fc> %dynnetwork% <fc=#429942>|</fc> %kbd% <fc=#429942>|</fc> %date% "
        }

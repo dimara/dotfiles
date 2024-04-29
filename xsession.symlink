@@ -3,10 +3,6 @@
 # start compositing manager
 xcompmgr -t-5 -l-6 -r5 &
 
-# start notification-daemon needed by e.g. pidgin
-# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=648378
-/usr/lib/notification-daemon/notification-daemon &
-
 # set the cursor as pointer
 xsetroot -cursor_name left_ptr
 
@@ -34,7 +30,7 @@ urxvtd -q -f -o
 #eval $(ssh-agent --daemon)
 
 # start desired apps
-stalonetray &
+tint2 &
 nm-applet &
 
 exec xmonad
