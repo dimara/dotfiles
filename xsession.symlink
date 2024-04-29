@@ -17,7 +17,11 @@ hsetroot -solid "$BLUE"
 # /usr/share/X11/xorg.conf.d/50-thinkpad-x230-touchpad.conf
 
 # switch keyboard layout *only* with CapsLock
+# https://wiki.archlinux.org/title/Xorg/Keyboard_configuration#Switching_between_keyboard_layouts
 setxkbmap -option 'grp:caps_toggle' -layout  'us,gr'
+
+# modmap settings are reset by setxkbmap
+xmodmap ~/.Xmodmap
 
 # start urxvt deamon
 urxvtd -q -f -o

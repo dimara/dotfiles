@@ -1,0 +1,21 @@
+! Remap prt scr to Insert so that shift + prt scr = Paste
+!
+! xev -event keyboard
+! KeyPress event, serial 33, synthetic NO, window 0x2000001,
+!     root 0x522, subw 0x0, time 38164393, (460,631), root:(462,653),
+!     state 0x0, keycode 50 (keysym 0xffe1, Shift_L), same_screen YES,
+!     XLookupString gives 0 bytes: 
+!     XmbLookupString gives 0 bytes: 
+!     XFilterEvent returns: False
+!
+! KeyPress event, serial 33, synthetic NO, window 0x2000001,
+!     root 0x522, subw 0x0, time 38165672, (460,631), root:(462,653),
+!     state 0x1, keycode 107 (keysym 0xff61, Print), same_screen YES,
+!     XLookupString gives 0 bytes: 
+!     XmbLookupString gives 0 bytes: 
+!     XFilterEvent returns: False
+!
+! $ xmodmap -pke | grep -w -e 107 -e Insert 
+! keycode 107 = Print Sys_Req Print Sys_Req
+! keycode 118 = Insert NoSymbol Insert
+keycode 107 = Insert NoSymbol Insert

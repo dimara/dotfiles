@@ -151,7 +151,7 @@ myKeys =
   , ((0, xF86XK_AudioMute), spawn "amixer -q set Master toggle")
   , ((0, xF86XK_MonBrightnessUp), spawn "brightnessctl set +10%")
   , ((0, xF86XK_MonBrightnessDown), spawn "brightnessctl set 10%-")
-  , ((0, xK_Print), spawn "scrot -q 1 $HOME/Pictures/Screenshots/%Y-%m-%d-%H:%M:%S.png")
+  , ((altMask, xK_Print), spawn "scrot -q 1 $HOME/Pictures/Screenshots/%Y-%m-%d-%H:%M:%S.png")
   , ((altMask .|. shiftMask, xK_BackSpace), spawn "dm-tool lock")
   -- systemd-logind does not jet support HandlelidSwitchDocked
   , ((altMask .|. shiftMask, xK_Delete), spawn "sudo pm-suspend")
