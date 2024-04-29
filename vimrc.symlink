@@ -136,6 +136,9 @@ if has("autocmd")
 " rEST rules
   au FileType rst set expandtab softtabstop=3 tabstop=3 shiftwidth=3 spell
 
+" Markdown rules
+  au FileType md set expandtab softtabstop=3 tabstop=3 shiftwidth=3 spell
+
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
