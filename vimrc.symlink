@@ -27,7 +27,7 @@ let g:syntastic_c_gcc_args = ' -Wall -Wextra '
 
 " Disable specific bundle
 "let g:pathogen_disabled = ["syntastic"]
-call pathogen#infect()
+execute pathogen#infect()
 
 set guifont=Source\ Code\ Pro
 set t_Co=256
