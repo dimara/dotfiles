@@ -215,6 +215,20 @@ proxy() {
   printenv | grep -i proxy
 }
 
+docker-login-ecr() {
+  AWS_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+  AWS_REGION=$(aws configure get region)
+  aws ecr get-login-password | docker login --username AWS --password-stdin ${AWS_ACCOUNT?}.dkr.ecr.${AWS_REGION?}.amazonaws.com
+}
+
+aws-ec2-describe-instances() {
+
+	aws ec2 describe-instances  \
+		--query 'Reservations[].Instances[].{ID:InstanceId, Name:Tags[?Key==`Name`]|[0].Value, Cluster:Tags[?Key==`eks:cluster-name`]|[0].Value, Owner:Tags[?Key==`Owner`]|[0].Value, State:State.Name}'\
+		--output table
+
+}
+
 redsocks-docker() {
 
 	# This is the default docker network for docker0 bridge
