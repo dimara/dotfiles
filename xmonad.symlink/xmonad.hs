@@ -154,7 +154,7 @@ myKeys =
   , ((altMask, xK_Print), spawn "scrot -q 1 $HOME/Pictures/Screenshots/%Y-%m-%d-%H:%M:%S.png")
   , ((altMask .|. shiftMask, xK_BackSpace), spawn "dm-tool lock")
   -- systemd-logind does not jet support HandlelidSwitchDocked
-  , ((altMask .|. shiftMask, xK_Delete), spawn "sudo pm-suspend")
+  , ((altMask .|. shiftMask, xK_Delete), spawn "sudo systemctl restart bluetooth; dm-tool lock; sleep 5; sudo /usr/share/laptop-mode-tools/module-helpers/pm-suspend")
   , ((altMask, xK_p), spawn "dmenu_run -fn BitstreamVeraSansMono:size=8:antialias=true")
   , ((altMask, xK_Return), spawn myTerminal)
   , ((altMask .|. shiftMask, xK_Return), windows S.swapMaster)
