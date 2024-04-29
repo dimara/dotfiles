@@ -7,3 +7,13 @@ tls_trust_file /etc/ssl/certs/ca-certificates.crt
 # This location is allowed by apparmor
 logfile ~/.msmtp.log
 
+# HPE
+account hpe
+tls_starttls on
+host smtp.office365.com
+port 587
+from dimitrios.aragiorgis@hpe.com
+user dimitrios.aragiorgis@hpe.com
+auth xoauth2
+
+passwordeval "~/venv/mail/bin/oauth2get microsoft dimitrios.aragiorgis@hpe.com"

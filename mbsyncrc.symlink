@@ -6,3 +6,67 @@ Create Near
 CopyArrivalDate yes
 Expunge Both
 
+
+# --------------------------------------------------------------------
+# Personal account at HPE
+IMAPAccount hpe
+Host outlook.office365.com
+User dimitrios.aragiorgis@hpe.com
+# Run:
+# rm -r ~/.local/share/oauth2token/microsoft
+# OAUTHLIB_RELAX_TOKEN_SCOPE=1 ~/venv/mail/bin/oauth2create microsoft dimitrios.aragiorgis@hpe.com
+PassCmd "~/venv/mail/bin/oauth2get microsoft dimitrios.aragiorgis@hpe.com"
+SSLType IMAPS
+AuthMechs XOAUTH2
+
+IMAPStore hpe-remote
+Account hpe
+
+MaildirStore hpe-local
+Path ~/Mail/hpe/
+Inbox ~/Mail/hpe/Inbox
+SubFolders Verbatim
+
+Channel hpe-inbox
+Far :hpe-remote:
+Near :hpe-local:
+Patterns INBOX
+
+Channel hpe-drafts
+Far :hpe-remote:"Drafts"
+Near :hpe-local:Drafts
+
+Channel hpe-sent
+Far :hpe-remote:"Sent Items"
+Near :hpe-local:Sent
+
+Channel hpe-deleted
+Far :hpe-remote:"Deleted Items"
+Near :hpe-local:Deleted
+
+Channel hpe-junk
+Far :hpe-remote:"Junk Email"
+Near :hpe-local:Junk
+
+Channel hpe-meetings
+Far :hpe-remote:"Meetings"
+Near :hpe-local:Meetings
+
+Channel hpe-github
+Far :hpe-remote:"Github"
+Near :hpe-local:Github
+
+Channel hpe-jira
+Far :hpe-remote:"JIRA"
+Near :hpe-local:JIRA
+
+# Get all the channels together into a group.
+Group hpe
+Channel hpe-inbox
+Channel hpe-drafts
+Channel hpe-sent
+Channel hpe-deleted
+Channel hpe-junk
+Channel hpe-meetings
+Channel hpe-github
+Channel hpe-jira
