@@ -1,4 +1,6 @@
-text/html; lynx -assume_unrec_charset=iso-8859-7 -assume_charset=utf-8 -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+# https://unix.stackexchange.com/questions/42712/open-html-attachments-externally-in-mutt
+text/html; /usr/bin/google-chrome --incognito %s & sleep 1; test=test -n "$DISPLAY"; nametemplate=%s.html;
+text/html; w3m -I %{charset} -T text/html -dump; needsterminal; copiousoutput;
 text/x-diff; vim -R %s
 text/x-patch; vim -R %s
 image/png; eog %s
@@ -7,9 +9,9 @@ image/jpg; eog %s
 image/gif; eog %s
 image/tiff; eog %s
 application/msword; libreoffice %s
-application/pdf; acroread %s
+application/pdf; evince %s
 application/vnd.oasis.opendocument.text; libreoffice %s
 application/vnd.openxmlformats-officedocument.presentationml.presentation; libreoffice %s
 application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice %s
 application/rtf; libreoffice %s
-
+text/calendar; vcalendar-filter; copiousoutput

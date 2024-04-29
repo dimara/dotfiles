@@ -2428,6 +2428,6 @@ set sendmail_wait = 1
 # 
 #set dsn_return = ""
 
-alternative_order text/plain text/html
+alternative_order text/calendar text/plain text/html
 #
 # EOF

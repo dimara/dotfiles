@@ -21,3 +21,4 @@ auto_view text/x-script.elisp
 auto_view text/x-lisp
 auto_view text/x-diff
 auto_view image/tiff
+auto_view text/calendar

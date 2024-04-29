@@ -31,6 +31,7 @@ bind alias   " "      tag-entry
 bind alias   "\r"     select-entry
 
 bind attach  "v"      select-entry
+bind attach <return>  view-mailcap
 
 bind compose "v"      view-attach
 

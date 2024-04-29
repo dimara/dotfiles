@@ -24,3 +24,7 @@ macro index <Tab> "<search>~F || ~N<enter>" "Move to next unread or important me
 
 macro index ,fs '<enter-command>set simple_search = "~L %s | ~h %s | ~b %s"<Enter><enter-command> set simple_search<Enter>' "Use full search"
 macro index ,ss '<enter-command>set simple_search = "~L %s | ~s %s"<Enter><enter-command>set simple_search<Enter>' "Use simple search"
+
+# https://github.com/akkana/scripts/blob/master/viewmailattachments.py
+macro index ,v "<pipe-message>viewmailattachments.py<enter>" "View HTML email in browser"
+macro pager ,v "<pipe-message>viewmailattachments.py<enter>" "View HTML email in browser"
