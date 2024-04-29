@@ -62,24 +62,24 @@ border_color_pressed = #000000 100
 
 #-------------------------------------
 # Panel
-panel_items = LTSC
-panel_size = 100% 30
+panel_items = LS
+panel_size = 100% 20
 panel_margin = 0 0
 panel_padding = 2 0 2
 panel_background_id = 1
-wm_menu = 1
+wm_menu = 0
 panel_dock = 0
-panel_position = bottom center horizontal
+panel_position = top center horizontal
 panel_layer = top
-panel_monitor = all
-panel_shrink = 0
+panel_monitor = primary
+panel_shrink = 1
 autohide = 0
 autohide_show_timeout = 0
 autohide_hide_timeout = 0.5
 autohide_height = 2
 strut_policy = follow_size
 panel_window_name = tint2
-disable_transparency = 1
+disable_transparency = 0
 mouse_effects = 1
 font_shadow = 0
 mouse_hover_icon_asb = 100 0 10
@@ -148,11 +148,11 @@ launcher_icon_asb = 100 0 0
 launcher_icon_theme_override = 0
 startup_notifications = 1
 launcher_tooltip = 1
-launcher_item_app = tint2conf.desktop
-launcher_item_app = firefox.desktop
-launcher_item_app = iceweasel.desktop
-launcher_item_app = chromium-browser.desktop
 launcher_item_app = google-chrome.desktop
+launcher_item_app = slack.desktop
+launcher_item_app = chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Default.desktop
+launcher_item_app = chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default.desktop
+launcher_item_app = blueman-manager.desktop
 
 #-------------------------------------
 # Clock
