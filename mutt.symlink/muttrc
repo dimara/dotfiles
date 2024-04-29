@@ -1348,7 +1348,7 @@ set confirmcreate = no
 # This variable controls whether or not attachments on outgoing messages
 # are saved along with the main body of your message.
 # 
-set fcc_attach = no
+set fcc_attach = yes
 
 # variable : fcc_clear (boolean)
 # default  : no
