@@ -49,7 +49,10 @@ my_hdr From: Dimitris Aragiorgis <dimitris.aragiorgis@gmail.com>
 # My emails
 alternates dimara@cslab.ece.ntua.gr|dimitris.aragiorgis@gmail.com|dimara@grnet.gr|jim@dimara.net
 
-set spoolfile = "~/Mail/mbox"
+set mbox_type = 'Maildir'
+set mbox = '~/Mail'
+set folder = '~/Mail'
+set spoolfile = "~/Mail"
 
 # Force the SMTP envelope address to be the From: address
 # This allows Postfix to pick different relayhosts,

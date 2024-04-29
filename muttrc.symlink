@@ -10,4 +10,4 @@ source ~/.mutt/gpg.rc
 source ~/.mutt/macros
 source ~/.mutt/hooks                      # folder-hooks. save-hooks. fcc-hooks. message-hooks
 source ~/.mutt/defaults
-# source ~/.mutt/sidebar.rc
+source ~/.mutt/sidebar.rc
