@@ -163,3 +163,70 @@ export PDSH_GENDERS_FILE=~/.pdsh/genders
 export PDSH_RCMD_TYPE=ssh
 
 export PATH=$PATH:~/scripts
+
+get_random_port() {
+  read lower upper  < /proc/sys/net/ipv4/ip_local_port_range
+  # XXX: Hope we get lucky and it is unused...
+  port=$(shuf -n1 -i ${lower}-${upper})
+  echo ${port}
+}
+
+socks() {
+  host=$1
+  port=$(get_random_port)
+
+  workdir=$(mktemp -d --tmpdir socks.XXXX)
+  logfile=${workdir}/ssh.log
+  socket=${workdir}/ssh-control-socket
+  ssh -vvv -o ControlMaster=yes -E ${logfile} -NfS ${socket} -D ${port} ${host} || tail ${logfile}
+  echo socks://127.0.0.1:${port}
+}
+
+chromeproxy() {
+  proxy=$1
+  workdir=$(mktemp -d --tmpdir chrome.XXXX)
+  chrome=$(which chrome || which google-chrome || echo "/opt/google/chrome/chrome")
+  ${chrome} \
+    --incognito \
+    --user-data-dir=${workdir} \
+    --proxy-server=${proxy} \
+    --enable-logging=stderr \
+    --dns-prefetch-disable \
+    --v=1
+  rm -rfv ${workdir}
+}
+
+socksproxy() {
+  port=$1
+  http_proxy=socks5://127.0.0.1:${port}
+  https_proxy=socks5://127.0.0.1:${port}
+  no_proxy=127.0.0.1,localhost
+  HTTP_PROXY=$http_proxy
+  HTTPS_PROXY=$https_proxy
+  NO_PROXY=$no_proxy
+  export http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY
+}
+
+noproxy() {
+  unset http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY
+}
+
+proxy() {
+  printenv | grep -i proxy
+}
+
+redsocks-docker() {
+
+	# This is the default docker network for docker0 bridge
+	network=${1?}
+	proxy_address=${2?}
+	proxy_port=${3?}
+	network_id=$(docker network inspect -f {{.Id}} $network)
+	[[ -z "${network_id}" ]] && echo Network not found && return
+	bridge=$(docker network inspect -f '{{index .Options "com.docker.network.bridge.name"}}' $network)
+	[[ -z "$bridge" ]] && bridge="br-${network_id:0:12}"
+	name=redsocks-$network
+	echo Starting docker container $name for bridge $bridge using proxy $proxy_address:$proxy_port...
+	docker run -d --rm --name ${name?} --restart=no --privileged=true --net=host -e DOCKER_NET=${bridge?} ncarlier/redsocks:latest ${proxy_address?} ${proxy_port?}
+
+}

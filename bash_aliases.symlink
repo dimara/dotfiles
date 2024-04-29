@@ -46,3 +46,5 @@ alias docker-run='docker run --rm \
   -w /workdir \
   -u $(id -u):$(id -g) \
   --group-add $(getent group docker | cut -d: -f3)'
+
+alias kill-socks='find /tmp/socks* -type s -name ssh-control-socket -exec ssh -S {} -O exit blah \;'
