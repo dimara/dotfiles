@@ -154,4 +154,9 @@ epoch2date() {
 	date --iso-8601=sec -u -d @$ts
 }
 
+date2epoch() {
+	ts="$*"
+	date --date="$ts" +"%s"
+}
+
 export PATH=$PATH:~/scripts
