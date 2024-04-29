@@ -159,4 +159,7 @@ date2epoch() {
 	date --date="$ts" +"%s"
 }
 
+export PDSH_GENDERS_FILE=~/.pdsh/genders
+export PDSH_RCMD_TYPE=ssh
+
 export PATH=$PATH:~/scripts
