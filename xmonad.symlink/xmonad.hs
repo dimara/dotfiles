@@ -2,10 +2,8 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.FloatNext
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.Place
 
 -- layouts
 import XMonad.Layout.IM
@@ -25,7 +23,6 @@ import XMonad.Util.EZConfig(additionalKeys)
 
 import Graphics.X11.ExtraTypes.XF86
 
-import Data.List
 import System.IO
 import qualified Data.Monoid
 import qualified XMonad.StackSet as S
@@ -34,7 +31,6 @@ myTerminal, myBrowser :: [Char]
 myTerminal = "urxvt"
 -- See created profiles under .config/google-chrome/
 myBrowser = "google-chrome-stable --profile-directory='Default'"
-myBrowserArrikto = "google-chrome-stable --profile-directory='Profile 1'"
 
 altMask, winMask, myModMask :: KeyMask
 altMask = mod1Mask
@@ -45,8 +41,10 @@ myBorderWidth :: Dimension
 myBorderWidth = 2
 -- http://htmlcolorcodes.com/
 -- white
+myNormalBorderColor :: String
 myNormalBorderColor = "#FFFFFF"
 -- red
+myFocusedBorderColor :: String
 myFocusedBorderColor = "#FF0008"
 
 -- -------------------------------------------------------------------
@@ -69,10 +67,6 @@ myWorkSpaces =
   ]
 
 
--- https://www.reddit.com/r/xmonad/comments/rj5wer/match_class_names_and_titles_by_regexp_in_xmonad/
-(~?) :: (Eq a, Functor m) => m [a] -> [a] -> m Bool
-q ~? x = fmap (x `isInfixOf`) q
-
 ----------------------------------------------------------------------
 -- Window rules
 -- Execute arbitrary actions and WindowSet manipulations when managing
@@ -91,7 +85,8 @@ myManageHook = composeAll
   [ resource  =? "desktop_window"        --> doIgnore
   , resource  =? "Dialog"                --> doFloat
   , title ~? "Outlook"                   --> doShift "1:mail"
-  , title ~? "Microsoft Teams"           --> doShift "3:im"
+  , title ~? "Microsoft Teams"           --> doShift "4:web"
+  , className =? "Slack"                 --> doShift "3:im"
   , className =? "Skype"                 --> doShift "3:im"
   , className =? "Pidgin"                --> doShift "3:im"
   , className =? "TelegramDesktop"       --> doShift "3:im"
@@ -191,14 +186,14 @@ myKeys =
 main :: IO ()
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ docks $ defaultConfig
+  xmonad $ docks $ def
     { terminal    = myTerminal
     , workspaces  = myWorkSpaces
     , modMask     = myModMask
     , borderWidth = myBorderWidth
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor  = myFocusedBorderColor
-    , manageHook  = myManageHook <+> manageHook defaultConfig
+    , manageHook  = myManageHook <+> manageHook def
     , layoutHook  = myLayoutHook
     , logHook     = myLogHook xmproc
     } `additionalKeys` myKeys

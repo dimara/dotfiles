@@ -1,4 +1,4 @@
-Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
+Config { font = "Bitstream Vera Sans Mono 10"
        , bgColor = "#000000"
        , fgColor = "#C9A34E"
        , border = NoBorder
@@ -6,7 +6,7 @@ Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
        -- , position = Top
        -- https://hackage.haskell.org/package/xmobar-0.8/src/README.html
        -- , position = Static { xpos = 0 , ypos = 0, width = 1365, height = 16 }
-       , position = Top,
+       , position = TopH 20
        -- , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 16 }
        -- Works but is too thin and does not fit stalonetray..
        -- , position = Top C 100
