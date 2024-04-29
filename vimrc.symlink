@@ -328,3 +328,5 @@ nnoremap ξξ :call XKBLayoutSwitch()<CR>
 
 "Load .bashrc and make :! shell behave like our command prompts (i.e., with aliases)
 "set shellcmdflag=-ic
+
+set mouse=
