@@ -27,9 +27,22 @@ fi
 alias pbcopy="xclip -selection c"
 alias pbpaste="xclip -selection clipboard -o"
 
+# https://github.com/mikefarah/yq?tab=readme-ov-file#oneshot-use
 alias yq='docker run --rm -v ${PWD}:/workdir -w /workdir mikefarah/yq'
 
 alias teams="gtk-launch teams"
 alias outlook="gtk-launch outlook"
-
 alias screen-mutt='screen -c ~/.mutt/screenrc -S mutt -R'
+
+alias goenv='docker run --rm -ti  --name build --hostname build -v $PWD:/code -v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK -e SSH_AUTH_SOCK -e GOWORK=off -v /var/run/docker.sock:/var/run/docker.sock -w /code golang:1.20 /bin/bash'
+
+alias kubectl-get-images='kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image} {.items[*].spec.initContainers[*].image}" | xargs -n1 | sort -u'
+
+alias xrandr-home='xrandr --output eDP-1 --auto --primary --output DP-1-2 --auto --right-of eDP-1'
+
+alias docker-run='docker run --rm \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v $PWD:/workdir \
+  -w /workdir \
+  -u $(id -u):$(id -g) \
+  --group-add $(getent group docker | cut -d: -f3)'
