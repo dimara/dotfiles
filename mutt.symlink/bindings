@@ -52,6 +52,6 @@ bind pager   "\ex"    exit
 bind pager   "\Cxo"   change-folder
 bind pager   "\Cxb"   change-folder
 bind pager   "\Cx\Cf" change-folder
-bind pager   J        next-line
-bind pager   K        previous-line
+#bind pager   J        next-line
+#bind pager   K        previous-line
 bind pager   <TAB>    next-unread

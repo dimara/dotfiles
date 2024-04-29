@@ -15,10 +15,13 @@ set sidebar_indent_string="  "
 
 bind index J sidebar-next
 bind index K sidebar-prev
-bind index L sidebar-open
+bind index O sidebar-open
+bind pager J sidebar-next
+bind pager K sidebar-prev
+bind pager O sidebar-open
 
 # color sidebar_new green default
 
-# b toggles sidebar visibility
-macro index b '<enter-command>toggle sidebar_visible<enter>'
-macro pager b '<enter-command>toggle sidebar_visible<enter>'
+# B toggles sidebar visibility
+bind index B sidebar-toggle-visible
+bind pager B sidebar-toggle-visible
