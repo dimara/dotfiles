@@ -59,18 +59,6 @@ UNDERLINE=$(tput smul)
 
 EDITOR=`which vim`
 
-parse_git_branch() {
-      git branch 2> /dev/null | sed -n 's/* \(.*\)/(\1)/p'
-}
-
-__git_ps1 ()
-{
-    local b="$(git symbolic-ref HEAD 2>/dev/null)";
-    if [ -n "$b" ]; then
-        printf " (%s)" "${b##refs/heads/}";
-    fi
-}
-
 screen_set_window_title () {
   local HPWD="$PWD"
   case $HPWD in
@@ -80,10 +68,14 @@ screen_set_window_title () {
   printf '\ek%s\e\\' "$(basename "$HPWD")"
 }
 
+# /etc/bash_completion.d/git-prompt
+# https://git-scm.com/book/pl/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
+export GIT_PS1_SHOWDIRTYSTATE=1
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}${GREEN}\u@\h${NORMAL}|${POWDER_BLUE}k8s:$(kubectl config current-context|xargs -r basename)${NORMAL}|${YELLOW}aws:${AWS_PROFILE}${NORMAL}|:${CYAN}\w${NORMAL}${RED}$(parse_git_branch)${NORMAL}\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}${GREEN}\u@\h${NORMAL}|${POWDER_BLUE}k8s:$(kubectl config current-context|xargs -r basename)${NORMAL}|${YELLOW}aws:${AWS_PROFILE}${NORMAL}|:${CYAN}\w${NORMAL}${RED}$(__git_ps1)${NORMAL}\n\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h|:\w$(parse_git_branch)\n\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h|:\w$(__git_ps1)\n\$ '
 fi
 unset color_prompt
 
