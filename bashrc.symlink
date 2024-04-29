@@ -163,6 +163,7 @@ export PDSH_GENDERS_FILE=~/.pdsh/genders
 export PDSH_RCMD_TYPE=ssh
 
 export PATH=$PATH:~/scripts
+export GOWORK=off
 
 get_random_port() {
   read lower upper  < /proc/sys/net/ipv4/ip_local_port_range
