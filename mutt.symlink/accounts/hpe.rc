@@ -1,0 +1,10 @@
+set record = ''
+set sendmail = 'msmtp -a hpe'
+set realname = 'Aragiorgis, Dimitrios'
+set from = 'dimitrios.aragiorgis@hpe.com'
+set use_envelope_from
+color status brightwhite green
+
+alternates -group me dimitrios.aragiorgis@hpe.com
+alternates -group me dimitris.aragiorgis@hpe.com
+alternates -group me dimara@hpe.com

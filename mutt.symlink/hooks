@@ -20,3 +20,5 @@ message-hook "~h \"X-Mailer: IncrediMail" "set display_filter='tr -d \\\\r'"
 fcc-hook 	  .                	        =sent
 
 save-hook   .                         =mbox
+
+folder-hook 'hpe' 'source ~/.mutt/accounts/hpe.rc'

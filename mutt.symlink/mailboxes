@@ -1,0 +1,2 @@
+mailboxes =hpe
+mailboxes =hpe/Inbox =hpe/Drafts =hpe/Sent =hpe/Deleted =hpe/Junk =hpe/Meetings =hpe/Github =hpe/JIRA
