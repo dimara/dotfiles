@@ -1,0 +1,8 @@
+{
+    "web": {
+        "client_id": "08162f7c-0fd2-4200-a84a-f25a4db0b584",
+        "client_secret": "TxRBilcHdC6WGBee]fs?QR:SJ8nI[g82",
+        "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+        "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+    }
+}
