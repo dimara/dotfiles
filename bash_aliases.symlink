@@ -31,3 +31,5 @@ alias yq='docker run --rm -v ${PWD}:/workdir -w /workdir mikefarah/yq'
 
 alias teams="gtk-launch teams"
 alias outlook="gtk-launch outlook"
+
+alias screen-mutt='screen -c ~/.mutt/screenrc -S mutt -R'

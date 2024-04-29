@@ -1,0 +1,7 @@
+source .screenrc
+
+screen -t mutt mutt
+screen -t sync fetchmail
+screen -t bash
+
+select 0
