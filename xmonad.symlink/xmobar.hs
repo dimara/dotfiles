@@ -5,7 +5,8 @@ Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
        , borderColor = "#000000"
        -- , position = Top
        -- https://hackage.haskell.org/package/xmobar-0.8/src/README.html
-       , position = Static { xpos = 0 , ypos = 0, width = 1365, height = 16 }
+       -- , position = Static { xpos = 0 , ypos = 0, width = 1365, height = 16 }
+       , position = Top,
        -- , position = Static { xpos = 0 , ypos = 0, width = 1920, height = 16 }
        -- Works but is too thin and does not fit stalonetray..
        -- , position = Top C 100
@@ -31,7 +32,7 @@ Config { font = "xft:DejaVuSansMono:size=8:antialias=true"
                               ] 300
                     , Run Memory [ "-t", "Mem: <usedratio>%" ] 100
                     , Run Date "%a %b %_d %Y %H:%M" "date" 600
-                    , Run Battery [ "-t", "Batt[<acstatus>]: <left>% / <timeleft>"
+                    , Run Battery [ "-t", "Batt[<acstatus>]: <left>%"
                                   , "--Low"      , "10"        -- units: %
                                   , "--High"     , "80"        -- units: %
                                   , "--low"      , "darkred"

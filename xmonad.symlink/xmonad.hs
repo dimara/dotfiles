@@ -186,7 +186,7 @@ myKeys =
 main :: IO ()
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobar.hs"
-  xmonad $ defaultConfig
+  xmonad $ docks $ defaultConfig
     { terminal    = myTerminal
     , workspaces  = myWorkSpaces
     , modMask     = myModMask
