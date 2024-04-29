@@ -69,6 +69,10 @@ myWorkSpaces =
   ]
 
 
+-- https://www.reddit.com/r/xmonad/comments/rj5wer/match_class_names_and_titles_by_regexp_in_xmonad/
+(~?) :: (Eq a, Functor m) => m [a] -> [a] -> m Bool
+q ~? x = fmap (x `isInfixOf`) q
+
 ----------------------------------------------------------------------
 -- Window rules
 -- Execute arbitrary actions and WindowSet manipulations when managing
@@ -86,6 +90,8 @@ myManageHook :: Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
   [ resource  =? "desktop_window"        --> doIgnore
   , resource  =? "Dialog"                --> doFloat
+  , title ~? "Outlook"                   --> doShift "1:mail"
+  , title ~? "Microsoft Teams"           --> doShift "3:im"
   , className =? "Skype"                 --> doShift "3:im"
   , className =? "Pidgin"                --> doShift "3:im"
   , className =? "TelegramDesktop"       --> doShift "3:im"

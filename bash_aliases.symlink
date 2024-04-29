@@ -30,3 +30,6 @@ alias pbpaste="xclip -selection clipboard -o"
 alias yq='docker run --rm -v ${PWD}:/workdir -w /workdir mikefarah/yq'
 
 alias screen-mutt='screen -c ~/.mutt/screenrc -S mutt -R'
+
+alias teams="gtk-launch teams"
+alias outlook="gtk-launch outlook"
