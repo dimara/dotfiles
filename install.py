@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import glob
 import os
 import shutil
@@ -15,16 +15,16 @@ def install():
         filename, _ = source.split('.')
         dest = HOME_DIR + '/.' + filename
 
-        print 'Installing file %s' % filename
+        print('Installing file %s' % filename)
 
         if os.path.exists(dest):
             if not (back_all or skip_all or over_all):
-                print 'File %s exists.' % dest
-                print 'Pick Action:'
-                print '[s/S]kip /All'
-                print '[o/O]verwrite /All'
-                print '[b/B]ack_up /All'
-                ans = raw_input()
+                print('File %s exists.' % dest)
+                print('Pick Action:')
+                print('[s/S]kip /All')
+                print('[o/O]verwrite /All')
+                print('[b/B]ack_up /All')
+                ans = input()
 
                 if ans == 'S':
                     skip_all = True
