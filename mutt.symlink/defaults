@@ -26,8 +26,6 @@ reset abort_nosubject
 
 # Always verify signatures by default.
 set pgp_verify_sig
-set pgp_autosign=yes
-set pgp_sign_as=7A0811BD
 
 # Sort on threads
 set sort=threads
@@ -39,16 +37,6 @@ set pager_index_lines=20
 unignore Date:
 hdr_order From: To: CC: BCC: Reply-To: Mail-Followup-To: Date: Subject: Organization: User-Agent: X-Mailer:
 
-# Default headers
-set from = 'dimitris.aragiorgis@gmail.com'
-set realname = "Dimitris Aragiorgis"
-my_hdr X-URL: http://www.cslab.ece.ntua.gr/~dimara/
-my_hdr X-PGP-Key: http://www.cslab.ece.ntua.gr/~dimara/keys/pubring.gpg
-my_hdr From: Dimitris Aragiorgis <dimitris.aragiorgis@gmail.com>
-
-# My emails
-alternates dimara@cslab.ece.ntua.gr|dimitris.aragiorgis@gmail.com|dimara@grnet.gr|jim@dimara.net
-
 set mbox_type = 'Maildir'
 set mbox = '~/Mail'
 set folder = '~/Mail'
@@ -59,8 +47,6 @@ set spoolfile = "~/Mail"
 # based on sender_dependent_relayhost_maps, see /etc/postfix/main.cf
 set use_envelope_from = yes
 
-
 # because we are mounting fs with noatime option
 # mutt cannot decide whether folders have new mail or not.
 set check_mbox_size = yes
-
